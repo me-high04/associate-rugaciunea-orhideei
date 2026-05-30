@@ -15,7 +15,7 @@ STRIPE_SECRET_KEY=sk_test_...   # înlocuiește cu cheia ta secretă
 PORT=3000
 ```
 
-3. Editează `index-2.html` și înlocuiește valoarea `REPLACE_WITH_YOUR_PUBLISHABLE_KEY` din variabila `STRIPE_PUBLISHABLE_KEY` cu cheia ta publicabilă.
+3. Editează `index.html` și înlocuiește valoarea `REPLACE_WITH_YOUR_PUBLISHABLE_KEY` din variabila `STRIPE_PUBLISHABLE_KEY` cu cheia ta publicabilă.
 
 4. Instalează dependențele și pornește serverul:
 
@@ -24,7 +24,7 @@ npm install
 npm start
 ```
 
-5. Deschide `http://localhost:3000/index-2.html` în browser.
+5. Deschide `http://localhost:3000/index.html` în browser.
 
 Notă despre Apple Pay / Google Pay:
 - Pentru a folosi Apple Pay în producție, trebuie verificat domeniul în dashboard-ul Stripe (Domain Verification) și să folosești o adresă HTTPS.
