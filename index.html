@@ -217,6 +217,80 @@
     .footer { background:#f0dfc8; border-top:1px solid #e0c9a8; padding:2rem; text-align:center; font-size:.84rem; color:#8a6040; line-height:1.9; }
     .footer strong { color:#6b3a1f; font-size:.95rem; }
     .footer a { color:#7a3e18; }
+
+    /* COOKIE CONSENT BANNER */
+    .cookie-consent-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; background: #2c2416; color: #fff;
+      padding: 1.5rem; text-align: center; display: none; justify-content: center; align-items: center;
+      z-index: 9999; box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
+    }
+    .cookie-consent-content {
+      max-width: 900px; display: flex; justify-content: space-between; align-items: center;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .cookie-consent-content h3 { margin: 0 0 0.4rem 0; font-size: 1.05rem; font-weight: 700; }
+    .cookie-consent-content p { margin: 0; font-size: 0.9rem; line-height: 1.5; text-align: left; flex: 1; min-width: 250px; }
+    .cookie-consent-buttons {
+      display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;
+    }
+    .cookie-consent-buttons button {
+      padding: 0.7rem 1.4rem; border: none; border-radius: 25px; cursor: pointer;
+      font-weight: 700; font-size: 0.92rem; transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+    }
+    .btn-necessary {
+      background: transparent; color: #fff; border: 1.5px solid #fff;
+    }
+    .btn-necessary:hover { background: rgba(255,255,255,0.1); }
+    .btn-all {
+      background: #b85c2a; color: #fff; border: none;
+    }
+    .btn-all:hover { background: #9a4c22; transform: translateY(-1px); }
+
+    /* LEGAL FOOTER */
+    .legal-footer {
+      background: #f9ede0; border-top: 1px solid #e0c9a8; padding: 3rem 2rem 2rem;
+      margin-top: 3rem;
+    }
+    .legal-footer-content {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
+    }
+    .legal-section {
+      padding: 1.2rem; background: #fff8f0; border: 1px solid #e8d0b0; border-radius: 12px;
+    }
+    .legal-section h4 {
+      font-family: 'Playfair Display', serif; font-size: 1rem; color: #6b3a1f;
+      margin: 0 0 0.6rem 0; font-weight: 700;
+    }
+    .legal-section p {
+      font-size: 0.85rem; color: #5a3820; line-height: 1.6; margin: 0;
+    }
+    .legal-link {
+      color: #b85c2a; text-decoration: underline; font-weight: 600;
+      cursor: pointer;
+    }
+    .legal-link:hover { color: #7a3e18; }
+    .legal-bottom {
+      grid-column: 1 / -1; text-align: center; padding-top: 1rem;
+      border-top: 1px solid #e0c9a8; margin-top: 0.5rem;
+      font-size: 0.8rem; color: #8a6040;
+    }
+
+    @media (max-width: 768px) {
+      .cookie-consent-content {
+        flex-direction: column; gap: 1rem;
+      }
+      .cookie-consent-content p {
+        min-width: 100%;
+      }
+      .cookie-consent-buttons {
+        width: 100%;
+      }
+      .legal-footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -591,6 +665,79 @@
       document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done();
     }
   }
+
+  /* COOKIE CONSENT */
+  function initCookieConsent(){
+    if(!localStorage.getItem('cookieConsent')){
+      document.getElementById('cookieConsent').style.display = 'flex';
+    }
+  }
+  function acceptCookiesNecessary(){
+    localStorage.setItem('cookieConsent', 'necessary');
+    document.getElementById('cookieConsent').style.display = 'none';
+    loadNecessaryCookies();
+  }
+  function acceptAllCookies(){
+    localStorage.setItem('cookieConsent', 'all');
+    document.getElementById('cookieConsent').style.display = 'none';
+    loadAllCookies();
+  }
+  function loadNecessaryCookies(){
+    // Load only essential cookies (e.g., session management)
+  }
+  function loadAllCookies(){
+    // Load analytics and marketing cookies
+    // Example: Google Analytics
+    if(typeof gtag === 'undefined'){
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID', {'anonymize_ip': true});
+    }
+  }
+  window.addEventListener('DOMContentLoaded', function(){ initCookieConsent(); });
 </script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookieConsent" class="cookie-consent-banner">
+  <div class="cookie-consent-content">
+    <h3>🍪 Politica de cookies</h3>
+    <p>Folosim cookies pentru a îmbunătăți experiența pe site. Unele sunt esențiale (necesare), altele ajută la analytics și marketing. Poți accepta doar cele necesare sau toate.</p>
+    <div class="cookie-consent-buttons">
+      <button onclick="acceptCookiesNecessary()" class="btn-necessary">Acceptă doar necesare</button>
+      <button onclick="acceptAllCookies()" class="btn-all">Acceptă toate</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL FOOTER -->
+<footer class="legal-footer">
+  <div class="legal-footer-content">
+    <div class="legal-section">
+      <h4>📋 Politica de cookies</h4>
+      <p>Site-ul nostru folosește cookies pentru funcționalitate (necesare) și pentru a îmbunătăți experiența ta. Cookies-urile necesare sunt salvate automat. Poți controla alte tipuri de cookies din banner-ul de sus. <a href="#" class="legal-link">Citește detalii complete</a></p>
+    </div>
+    <div class="legal-section">
+      <h4>🛡️ GDPR & Protecția datelor</h4>
+      <p>Asociația Rugăciunea Orhideei respectă Regulamentul General asupra Protecției Datelor (GDPR 2016/679). Datele personale introduse pe site (email, nume, CNP în formulare) sunt folosite exclusiv pentru scopurile menționate și nu sunt partajate cu terți fără consimțământul tău. <a href="#" class="legal-link">Citește Declarația de confidențialitate</a></p>
+    </div>
+    <div class="legal-section">
+      <h4>⚖️ Termeni și condiții</h4>
+      <p>Site-ul este pus la dispoziție în starea actuală. Asociația nu este răspunzătoare pentru daune indirecte sau pierderi de date. Folosind site-ul, accepți acești termeni. Orice problemă se va soluționa conform legii române.</p>
+    </div>
+    <div class="legal-section">
+      <h4>✉️ Contactează-ne</h4>
+      <p>Pentru orice întrebări privind cookies, GDPR, sau alte aspecte legale, ne poți contacta la <strong>rugaciuneaorhideei@gmail.com</strong> sau pe adresa sediului: <strong>Str. Vasile Lascăr, nr. 23-25, Sector 2, București</strong></p>
+    </div>
+    <div class="legal-section">
+      <h4>ℹ️ Informații asociație</h4>
+      <p>Asociația Rugăciunea Orhideei · CIF: 54385615 · Sediu: București · Înregistrată în Registrul Entităților/Unităților de Cult la ANAF din 30.03.2026 · IBAN: RO38RNCB0072185488600001 (BCR)</p>
+    </div>
+    <div class="legal-bottom">
+      <p>&copy; 2026 Asociația Rugăciunea Orhideei. Toate drepturile rezervate.</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
