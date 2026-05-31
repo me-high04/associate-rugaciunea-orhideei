@@ -249,35 +249,57 @@
 
     /* LEGAL FOOTER */
     .legal-footer {
-      background: #f9ede0; border-top: 1px solid #e0c9a8; padding: 3rem 2rem 2rem;
-      margin-top: 3rem;
+      background: #1a1a1a; color: #fff; padding: 3rem 2rem 2rem; margin-top: 3rem;
+      border-top: 1px solid #333;
     }
-    .legal-footer-content {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
+    .legal-wrapper {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
     }
-    .legal-section {
-      padding: 1.2rem; background: #fff8f0; border: 1px solid #e8d0b0; border-radius: 12px;
+    .footer-about {
+      padding-right: 2rem;
     }
-    .legal-section h4 {
-      font-family: 'Playfair Display', serif; font-size: 1rem; color: #6b3a1f;
-      margin: 0 0 0.6rem 0; font-weight: 700;
+    .footer-logo {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff;
+      margin: 0 0 1rem 0; font-weight: 700; letter-spacing: 1px;
     }
-    .legal-section p {
-      font-size: 0.85rem; color: #5a3820; line-height: 1.6; margin: 0;
+    .footer-description {
+      font-size: 0.95rem; color: #bbb; line-height: 1.6; margin: 0;
     }
-    .legal-link {
-      color: #b85c2a; text-decoration: underline; font-weight: 600;
+    .footer-column {
+      display: flex; flex-direction: column;
+    }
+    .footer-title {
+      font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+      color: #fff; font-weight: 700; margin: 0 0 1.2rem 0;
+    }
+    .footer-links {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+    .footer-links li {
+      font-size: 0.9rem; color: #bbb;
+    }
+    .footer-links a {
+      color: #bbb; text-decoration: none; transition: color 0.3s;
       cursor: pointer;
     }
-    .legal-link:hover { color: #7a3e18; }
-    .legal-bottom {
-      grid-column: 1 / -1; text-align: center; padding-top: 1rem;
-      border-top: 1px solid #e0c9a8; margin-top: 0.5rem;
-      font-size: 0.8rem; color: #8a6040;
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      grid-column: 1 / -1; padding-top: 1.5rem; border-top: 1px solid #333;
+      text-align: center; font-size: 0.85rem; color: #888;
     }
 
     @media (max-width: 768px) {
+      .legal-wrapper {
+        grid-template-columns: 1fr; gap: 2rem;
+      }
+      .footer-about {
+        padding-right: 0;
+      }
+
       .cookie-consent-content {
         flex-direction: column; gap: 1rem;
       }
@@ -806,32 +828,53 @@
 
 <!-- LEGAL FOOTER -->
 <footer class="legal-footer">
-  <div class="legal-footer-content">
-    <div class="legal-section">
-      <h4>📋 Politica de cookies</h4>
-      <p>Site-ul nostru folosește cookies pentru funcționalitate (necesare) și pentru a îmbunătăți experiența ta. Cookies-urile necesare sunt salvate automat. Poți controla alte tipuri de cookies din banner-ul de sus. <a href="#" class="legal-link">Citește detalii complete</a></p>
+  <div class="legal-wrapper">
+    <!-- About Section -->
+    <div class="footer-about">
+      <h4 class="footer-logo">Rugăciunea Orhideei</h4>
+      <p class="footer-description">Asociație religioasă dedicată oamenilor cu nevoi spirituale și religioase. Oferim sprijin spiritual, redirecționare a impozitelor și informații juridice.</p>
     </div>
-    <div class="legal-section">
-      <h4>🛡️ GDPR & Protecția datelor</h4>
-      <p>Asociația Rugăciunea Orhideei respectă Regulamentul General asupra Protecției Datelor (GDPR 2016/679). Datele personale introduse pe site (email, nume, CNP în formulare) sunt folosite exclusiv pentru scopurile menționate și nu sunt partajate cu terți fără consimțământul tău. <a href="#" class="legal-link">Citește Declarația de confidențialitate</a></p>
+
+    <!-- Legal Column -->
+    <div class="footer-column">
+      <h5 class="footer-title">LEGAL</h5>
+      <ul class="footer-links">
+        <li><a href="#" onclick="showPolicy('cookies')">Politică cookies</a></li>
+        <li><a href="#" onclick="showPolicy('gdpr')">GDPR și date personale</a></li>
+        <li><a href="#" onclick="showPolicy('terms')">Termeni și condiții</a></li>
+        <li><a href="#" onclick="showPolicy('confidentiality')">Confidențialitate</a></li>
+      </ul>
     </div>
-    <div class="legal-section">
-      <h4>⚖️ Termeni și condiții</h4>
-      <p>Site-ul este pus la dispoziție în starea actuală. Asociația nu este răspunzătoare pentru daune indirecte sau pierderi de date. Folosind site-ul, accepți acești termeni. Orice problemă se va soluționa conform legii române.</p>
-    </div>
-    <div class="legal-section">
-      <h4>✉️ Contactează-ne</h4>
-      <p>Pentru orice întrebări privind cookies, GDPR, sau alte aspecte legale, ne poți contacta la <strong>rugaciuneaorhideei@gmail.com</strong> sau pe adresa sediului: <strong>Str. Vasile Lascăr, nr. 23-25, Sector 2, București</strong></p>
-    </div>
-    <div class="legal-section">
-      <h4>ℹ️ Informații asociație</h4>
-      <p>Asociația Rugăciunea Orhideei · CIF: 54385615 · Sediu: București · Înregistrată în Registrul Entităților/Unităților de Cult la ANAF din 30.03.2026 · IBAN: RO38RNCB0072185488600001 (BCR)</p>
-    </div>
-    <div class="legal-bottom">
-      <p>&copy; 2026 Asociația Rugăciunea Orhideei. Toate drepturile rezervate.</p>
+
+    <!-- Info Column -->
+    <div class="footer-column">
+      <h5 class="footer-title">CONTACT</h5>
+      <ul class="footer-links">
+        <li><strong style="color: #fff;">Email:</strong><br><a href="mailto:rugaciuneaorhideei@gmail.com">rugaciuneaorhideei@gmail.com</a></li>
+        <li><strong style="color: #fff;">CIF:</strong> 54385615</li>
+        <li><strong style="color: #fff;">IBAN:</strong><br>RO38RNCB0072185488600001</li>
+      </ul>
     </div>
   </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2026 Asociația Rugăciunea Orhideei. Toate drepturile rezervate.</p>
+  </div>
 </footer>
+
+<!-- Policy Modal Helper Function -->
+<script>
+  function showPolicy(type) {
+    const policies = {
+      cookies: 'Politica de Cookies: Site-ul nostru folosește cookies pentru funcționalitate. Cookies-urile necesare sunt salvate automat. Poți controla alte tipuri din banner-ul de consent.',
+      gdpr: 'GDPR: Respectăm Regulamentul General asupra Protecției Datelor. Datele personale nu sunt partajate cu terți fără consimțământul tău.',
+      terms: 'Termeni și Condiții: Site-ul este pus la dispoziție în starea actuală. Orice problemă se va soluționa conform legii române.',
+      confidentiality: 'Confidențialitate: Protejăm confidențialitatea datelor tale. Poți cere oricând acces, ștergere sau rectificare a datelor personale.'
+    };
+    alert(policies[type] || 'Informație nu disponibilă');
+  }
+</script>
 
 <!-- Debug Helper (open in browser console or add ?debug=1 to URL) -->
 <script>
