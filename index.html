@@ -574,71 +574,165 @@
 
   async function createPaymentIntent(amount) {
     try{
+      console.log('Creating payment intent for amount:', amount);
       var res = await fetch('/create-payment-intent', {
-        method: 'POST', headers: {'Content-Type':'application/json'},
+        method: 'POST', 
+        headers: {'Content-Type':'application/json'},
         body: JSON.stringify({ amount: amount })
       });
-      return await res.json();
-    } catch(err){ console.error(err); return null; }
+      if(!res.ok) {
+        console.error('Server returned:', res.status);
+        throw new Error('Server error: ' + res.status);
+      }
+      var data = await res.json();
+      console.log('Payment intent created:', data);
+      return data;
+    } catch(err){ 
+      console.error('Error creating payment intent:', err); 
+      showPaymentMessage('Eroare conexiune. Asigură-te că serverul rulează și SECRET KEY este configurat.');
+      return null; 
+    }
   }
 
   async function setupPaymentElements(){
-    var amountLei = parseInt(selectedAmount || '100',10);
-    var amountBani = amountLei * 100; // Stripe amounts are in the smallest currency unit
-    var data = await createPaymentIntent(amountBani);
-    if(!data || !data.clientSecret){
-      document.getElementById('paymentMessage').textContent = 'Eroare inițializare plată. Încearcă mai târziu.';
-      document.getElementById('paymentMessage').style.display = '';
-      return;
-    }
-    currentClientSecret = data.clientSecret;
-
-    elements = stripe.elements();
-    // Card element
-    if(cardElement) { cardElement.unmount(); cardElement = null; }
-    cardElement = elements.create('card', {style: {base: {fontSize: '16px', color: '#424770'}}});
-    cardElement.mount('#card-element');
-
-    // Payment Request Button (Apple Pay / Google Pay)
-    var paymentRequest = stripe.paymentRequest({
-      country: 'RO', currency: 'ron', total: {label: 'Donație', amount: amountBani},
-      requestPayerName: true, requestPayerEmail: true
-    });
-    var prButton = elements.create('paymentRequestButton', {paymentRequest: paymentRequest});
-    paymentRequest.canMakePayment().then(function(result){
-      if(result){
-        document.getElementById('payment-request-button').style.display = 'block';
-        prButton.mount('#payment-request-button');
-      } else {
-        document.getElementById('payment-request-button').style.display = 'none';
+    try {
+      var amountLei = parseInt(selectedAmount || '100',10);
+      var amountBani = amountLei * 100; // Stripe amounts are in the smallest currency unit
+      console.log('Setting up payment for:', amountLei, 'lei');
+      
+      showPaymentMessage('Se preiau detaliile plății...');
+      var data = await createPaymentIntent(amountBani);
+      
+      if(!data || !data.clientSecret){
+        console.error('No client secret received');
+        showPaymentMessage('Eroare: Nu s-a putut inițializa plata. Încearcă mai târziu.');
+        return;
       }
-    });
+      currentClientSecret = data.clientSecret;
+      showPaymentMessage('');
 
-    paymentRequest.on('paymentmethod', async function(ev){
-      // Confirm the PaymentIntent with the payment method from the Payment Request
-      const resp = await stripe.confirmCardPayment(currentClientSecret, {payment_method: ev.paymentMethod.id}, {handleActions:false});
-      if(resp.error){ ev.complete('fail'); showPaymentMessage(resp.error.message); }
-      else {
-        ev.complete('success');
-        if(resp.paymentIntent.status === 'requires_action'){
-          const final = await stripe.confirmCardPayment(currentClientSecret);
-          if(final.error) { showPaymentMessage(final.error.message); return; }
+      if(!elements) {
+        elements = stripe.elements();
+      }
+      
+      // Card element
+      if(cardElement) { cardElement.unmount(); cardElement = null; }
+      cardElement = elements.create('card', {
+        style: {
+          base: {
+            fontSize: '16px', 
+            color: '#424770',
+            '::placeholder': {
+              color: '#aab7c4',
+            },
+          },
+          invalid: {
+            color: '#fa755a',
+          },
         }
-        showSuccess();
-      }
-    });
+      });
+      cardElement.mount('#card-element');
+      console.log('Card element mounted');
 
-    // Form submit (card)
-    var form = document.getElementById('payForm');
-    form.onsubmit = async function(e){
-      e.preventDefault();
-      document.getElementById('payButton').disabled = true;
-      showPaymentMessage('Se procesează plata...');
-      const name = document.getElementById('payerName').value || '';
-      const result = await stripe.confirmCardPayment(currentClientSecret, {payment_method: {card: cardElement, billing_details: {name: name}}});
-      if(result.error){ showPaymentMessage(result.error.message); document.getElementById('payButton').disabled = false; }
-      else { if(result.paymentIntent && result.paymentIntent.status === 'succeeded'){ showSuccess(); } else { showPaymentMessage('Plata a fost procesată.'); } }
-    };
+      // Payment Request Button (Apple Pay / Google Pay)
+      try {
+        var paymentRequest = stripe.paymentRequest({
+          country: 'RO', 
+          currency: 'ron', 
+          total: {label: 'Donație', amount: amountBani},
+          requestPayerName: true, 
+          requestPayerEmail: true
+        });
+        var prButton = elements.create('paymentRequestButton', {paymentRequest: paymentRequest});
+        
+        paymentRequest.canMakePayment().then(function(result){
+          if(result){
+            console.log('Payment request available:', result);
+            document.getElementById('payment-request-button').style.display = 'block';
+            prButton.mount('#payment-request-button');
+          } else {
+            document.getElementById('payment-request-button').style.display = 'none';
+          }
+        }).catch(function(err) {
+          console.warn('Payment request not available:', err);
+          document.getElementById('payment-request-button').style.display = 'none';
+        });
+
+        paymentRequest.on('paymentmethod', async function(ev){
+          console.log('Payment method received from Payment Request');
+          // Confirm the PaymentIntent with the payment method from the Payment Request
+          const resp = await stripe.confirmCardPayment(currentClientSecret, {
+            payment_method: ev.paymentMethod.id
+          }, {handleActions:false});
+          
+          if(resp.error){ 
+            console.error('Payment failed:', resp.error);
+            ev.complete('fail'); 
+            showPaymentMessage(resp.error.message); 
+          }
+          else {
+            ev.complete('success');
+            console.log('Payment Intent status:', resp.paymentIntent.status);
+            if(resp.paymentIntent.status === 'requires_action'){
+              const final = await stripe.confirmCardPayment(currentClientSecret);
+              if(final.error) { 
+                console.error('Action failed:', final.error);
+                showPaymentMessage(final.error.message); 
+                return; 
+              }
+            }
+            showSuccess();
+          }
+        });
+      } catch(err) {
+        console.warn('Payment Request setup failed:', err);
+      }
+
+      // Form submit (card)
+      var form = document.getElementById('payForm');
+      if(form.onsubmit) {
+        form.onsubmit = null; // Clear old handler
+      }
+      form.onsubmit = async function(e){
+        e.preventDefault();
+        console.log('Card form submitted');
+        document.getElementById('payButton').disabled = true;
+        showPaymentMessage('Se procesează plata...');
+        const name = document.getElementById('payerName').value || '';
+        
+        try {
+          const result = await stripe.confirmCardPayment(currentClientSecret, {
+            payment_method: {
+              card: cardElement, 
+              billing_details: {name: name}
+            }
+          });
+          
+          console.log('Card payment result:', result);
+          if(result.error){ 
+            console.error('Card payment error:', result.error);
+            showPaymentMessage(result.error.message); 
+            document.getElementById('payButton').disabled = false; 
+          }
+          else { 
+            if(result.paymentIntent && result.paymentIntent.status === 'succeeded'){ 
+              console.log('Payment succeeded');
+              showSuccess(); 
+            } else { 
+              console.log('Payment processed with status:', result.paymentIntent.status);
+              showPaymentMessage('Plata a fost procesată. Status: ' + result.paymentIntent.status); 
+            } 
+          }
+        } catch(err) {
+          console.error('Card payment exception:', err);
+          showPaymentMessage('Eroare: ' + err.message);
+          document.getElementById('payButton').disabled = false;
+        }
+      };
+    } catch(err) {
+      console.error('Setup payment elements error:', err);
+      showPaymentMessage('Eroare neprevăzută. Consultă consola pentru detalii.');
+    }
   }
 
   function showPaymentMessage(msg){
@@ -738,6 +832,68 @@
     </div>
   </div>
 </footer>
+
+<!-- Debug Helper (open in browser console or add ?debug=1 to URL) -->
+<script>
+  // Add ?debug=1 to URL to enable debug mode
+  function initDebugMode() {
+    if(new URLSearchParams(window.location.search).get('debug') === '1') {
+      console.log('%c=== Stripe Integration Debug ===', 'color: #b85c2a; font-size: 16px; font-weight: bold;');
+      
+      console.log('✅ Stripe.js loaded:', typeof Stripe !== 'undefined');
+      console.log('✅ Publishable key configured:', STRIPE_PUBLISHABLE_KEY ? 'YES' : 'NO');
+      console.log('📋 Publishable key (first 20 chars):', STRIPE_PUBLISHABLE_KEY?.substring(0, 20) + '...');
+      
+      console.log('\n🧪 Testing backend connection...');
+      fetch('/health')
+        .then(r => r.json())
+        .then(data => {
+          console.log('✅ Backend is running:', data);
+          if(!data.hasStripeKey) {
+            console.warn('⚠️  STRIPE_SECRET_KEY not configured on server!');
+          }
+        })
+        .catch(err => {
+          console.error('❌ Backend not accessible:', err.message);
+          console.log('💡 Make sure to run: npm install && node server.js');
+        });
+      
+      console.log('\n📍 Test payment creation function:');
+      console.log('window.createPaymentIntent(100) // Test with 100 cents = 1 RON');
+      
+      window.testStripe = async function(amount = 100) {
+        console.log('🧪 Testing payment intent creation with', amount, 'smallest units...');
+        try {
+          const res = await fetch('/create-payment-intent', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ amount: amount })
+          });
+          const data = await res.json();
+          if(data.error) {
+            console.error('❌ Error:', data.error);
+          } else {
+            console.log('✅ Success! Client Secret:', data.clientSecret?.substring(0, 30) + '...');
+            console.log('📊 Full response:', data);
+          }
+        } catch(err) {
+          console.error('❌ Exception:', err);
+        }
+      };
+      
+      console.log('\n🔗 Quick commands:');
+      console.log('testStripe(100)  // Test backend');
+      console.log('selectAmount(document.querySelector(".amount-btn"), "50")  // Select 50 RON');
+      console.log('openCardPay()  // Open payment modal\n');
+    }
+  }
+  
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDebugMode);
+  } else {
+    initDebugMode();
+  }
+</script>
 
 </body>
 </html>
