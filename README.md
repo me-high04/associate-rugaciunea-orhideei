@@ -1,43 +1,42 @@
-# Integrare plăți (Stripe) — Asociația Rugăciunea Orhideei
+# Asociația Rugăciunea Orhideei — site donații
 
-Scop: adăugare frontend pentru donații cu card, plus suport Apple Pay / Google Pay prin Stripe. Aceasta este o configurație minimă pentru dezvoltare locală.
+Site static (`index.html`) publicat pe Netlify. Plățile cu cardul / Apple Pay / Google Pay merg prin Stripe,
+folosind două funcții Netlify din `netlify/functions/`:
 
-Pași rapizi:
+- `create-payment-intent` — creează plata (sume între 5 și 50.000 lei, descriere „Donație”, chitanță pe email opțională)
+- `config` — trimite paginii cheia publicabilă Stripe
 
-1. Creează un cont Stripe (dacă nu ai) și obține cheile API:
-   - `STRIPE_PUBLISHABLE_KEY` (cheia publicabilă, ex. `pk_test_...`)
-   - `STRIPE_SECRET_KEY` (cheia secretă, ex. `sk_test_...`)
+## Variabile de mediu (Netlify → Site configuration → Environment variables)
 
-2. Clonează / folosește fișierele din acest folder. Creează un fișier `.env` în rădăcina proiectului cu:
+| Variabilă | Test | Live |
+|---|---|---|
+| `STRIPE_SECRET_KEY` | `sk_test_...` | `sk_live_...` |
+| `STRIPE_PUBLISHABLE_KEY` | `pk_test_...` | `pk_live_...` |
 
-```
-STRIPE_SECRET_KEY=sk_test_...   # înlocuiește cu cheia ta secretă
-PORT=3000
-```
+Cele două chei trebuie să fie din același mod (ambele test sau ambele live).
+După ce le schimbi: **Deploys → Trigger deploy → Deploy site**. Nu e nevoie de modificări în cod.
+Cât timp site-ul folosește chei de test, în fereastra de plată apare eticheta „MOD TEST”.
 
-3. Editează `index.html` și înlocuiește valoarea `REPLACE_WITH_YOUR_PUBLISHABLE_KEY` din variabila `STRIPE_PUBLISHABLE_KEY` cu cheia ta publicabilă.
+## Trecerea pe plăți reale
 
-4. Instalează dependențele și pornește serverul:
+1. În Stripe: activează contul (date asociație, reprezentant, IBAN-ul pentru încasări).
+2. Stripe → Developers → API keys (cu „Test mode” oprit): copiază `pk_live_...` și `sk_live_...`.
+3. Pune-le în Netlify la variabilele de mai sus și redeploy.
+4. Apple Pay: Stripe → Settings → Payment methods → Payment method domains → adaugă domeniul site-ului.
+5. Fă o donație reală mică (ex. 5 lei) și verific-o în Stripe → Payments.
+
+## Local
 
 ```bash
 npm install
-npm start
+npm start          # http://localhost:3000
 ```
 
-5. Deschide `http://localhost:3000/index.html` în browser.
+`.env` (nu se urcă pe GitHub):
 
-Notă despre Apple Pay / Google Pay:
-- Pentru a folosi Apple Pay în producție, trebuie verificat domeniul în dashboard-ul Stripe (Domain Verification) și să folosești o adresă HTTPS.
-- Google Pay prin Payment Request API este disponibil în browsere care îl suportă.
-- În modul test, unele metode pot apărea doar pe anumite browsere sau platforme.
+```
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...   # opțional local
+```
 
-Teste (date card):
-- Folosește cardurile de test Stripe (ex. `4242 4242 4242 4242`) în mediul de test.
-
-Securitate și producție:
-- Nu păstra cheile secrete în cod; folosește variabile de mediu pe serverul de producție.
-- Configurează HTTPS și verificarea domeniului pentru Apple Pay.
-
-Dacă vrei, pot:
-- Adapta textul din pagină pentru a include instrucțiuni vizibile pentru plăți.
-- Configura un exemplu de webhook pentru a marca donațiile în baza ta de date.
+Card de test: `4242 4242 4242 4242`, orice dată viitoare, orice CVC.

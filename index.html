@@ -8,10 +8,10 @@
   <meta name="description" content="Susține Asociația Rugăciunea Orhideei: donează, redirecționează 3,5% din impozit (Formular 230) sau încheie un contract de sponsorizare.">
   <meta name="theme-color" content="#fbf5ef">
   <meta property="og:title" content="Asociația Rugăciunea Orhideei">
-  <meta property="og:description" content="Ghiozdane, rechizite, pachete și speranță pentru copii și familii vulnerabile. Donează sau redirecționează 3,5%.">
+  <meta property="og:description" content="Sprijin pentru copii, familii și oameni aflați în nevoie. Donează sau redirecționează 3,5%.">
   <meta property="og:image" content="images/proiecte/proiect-03.jpg">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
   <link rel="alternate icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,9 +141,9 @@
     }
     .polaroid img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
     .polaroid figcaption { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: .95rem; color: var(--ink-soft); }
-    .polaroid.p1 { width: 76%; height: 60%; top: 6%; left: 4%; transform: rotate(-3deg); z-index: 2; }
-    .polaroid.p2 { width: 44%; height: 62%; bottom: 0; right: 0; transform: rotate(4deg); z-index: 3; }
-    .polaroid.p3 { width: 38%; height: 44%; bottom: 0; left: 0; transform: rotate(-7deg); z-index: 3; }
+    .polaroid.p1 { width: 72%; height: 48%; top: 2%; left: 0; transform: rotate(-3deg); z-index: 2; }
+    .polaroid.p2 { width: 66%; height: 44%; bottom: 0; right: 0; transform: rotate(3deg); z-index: 3; }
+    .polaroid.p3 { width: 36%; height: 40%; bottom: 4%; left: 2%; transform: rotate(-6deg); z-index: 4; }
     .polaroid:hover { transform: rotate(0) scale(1.03); z-index: 5; }
     .hero-badge {
       position: absolute; top: 0; right: 2%; z-index: 6; background: #fff; border-radius: 16px; padding: .7rem 1rem;
@@ -208,7 +208,7 @@
     .story-head .av img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #fff; background: #fff; }
     .story-head b { display: block; font-size: .88rem; line-height: 1.2; }
     .story-head small { font-size: .76rem; color: var(--muted); }
-    .story-tag { margin-left: auto; display: inline-flex; align-items: center; gap: .3rem; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); background: #fbf0e8; border-radius: 999px; padding: .3rem .6rem; }
+    .story-tag { white-space: nowrap; margin-left: auto; display: inline-flex; align-items: center; gap: .3rem; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); background: #fbf0e8; border-radius: 999px; padding: .3rem .6rem; }
     .story-media { position: relative; border: 0; padding: 0; background: var(--bg-soft); cursor: zoom-in; aspect-ratio: 4 / 5; overflow: hidden; display: block; width: 100%; }
     .story-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
     .story-media:hover img { transform: scale(1.04); }
@@ -238,14 +238,9 @@
     .chip.active { background: var(--ink); color: #fff; border-color: var(--ink); --ico-fill: rgba(255,255,255,.2); }
     .swipe-hint { display: none; justify-content: center; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; color: var(--muted); margin-top: .4rem; }
 
-    .cta-band {
       margin-top: 3rem; border-radius: 28px; padding: 2.4rem 2.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
       background: linear-gradient(120deg, #3a2418 0%, #5b3422 60%, #7a4225 100%); color: #fff; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
     }
-    .cta-band .deco { position: absolute; right: -30px; top: -40px; width: 220px; height: 220px; color: #fff; --ico-fill: rgba(255,255,255,.05); opacity: .22; stroke-width: .7; transform: rotate(18deg); pointer-events: none; }
-    .cta-band h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 600; line-height: 1.2; }
-    .cta-band p { color: #f0d9c8; margin-top: .3rem; }
-    .cta-band .btn { position: relative; z-index: 1; }
 
     /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(20, 12, 8, .94); display: none; flex-direction: column; align-items: center; justify-content: center; padding: 16px; }
@@ -389,9 +384,14 @@
     .modal-card .sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.2rem; }
     .modal-close { display: grid; place-items: center; position: absolute; right: 14px; top: 14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--bg); font-size: 1.1rem; cursor: pointer; color: var(--ink); }
     .modal-card label { display: block; margin: .3rem 0 .35rem; font-size: .85rem; font-weight: 700; color: var(--ink-soft); }
-    .modal-card input[type=text] { width: 100%; padding: .85rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; margin-bottom: .8rem; font-size: 1rem; font-family: inherit; }
-    .modal-card input[type=text]:focus { outline: none; border-color: var(--brand); }
+    .modal-card input[type=text], .modal-card input[type=email] { width: 100%; padding: .85rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; margin-bottom: .8rem; font-size: 1rem; font-family: inherit; }
+    .modal-card input[type=text]:focus, .modal-card input[type=email]:focus { outline: none; border-color: var(--brand); }
     #card-element { padding: .95rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; margin-bottom: 1rem; }
+    .test-badge { display: inline-block; margin-left: .4rem; vertical-align: middle; font-family: 'Lato', sans-serif; font-size: .65rem; font-weight: 900; letter-spacing: .1em; background: #fff3cd; color: #7a5a00; border: 1px solid #f0d58a; border-radius: 999px; padding: .2rem .55rem; }
+    .pay-success { text-align: center; padding: 1rem 0 .4rem; }
+    .pay-success .ib { width: 76px; height: 76px; margin: 0 auto 1rem; } .pay-success .ib .ico { width: 38px; height: 38px; }
+    .pay-success h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: .4rem; }
+    .pay-success p { color: var(--ink-soft); margin-bottom: 1.2rem; }
     #paymentMessage { margin-top: .7rem; font-size: .9rem; color: var(--ink-soft); text-align: center; }
     .modal-note { font-size: .8rem; color: var(--muted); margin-top: .8rem; text-align: center; }
 
@@ -456,8 +456,7 @@
       .story { flex: 0 0 86%; scroll-snap-align: center; }
       .story:hover { transform: none; }
       .swipe-hint { display: flex; }
-      .cta-band { flex-direction: column; align-items: stretch; text-align: center; padding: 2rem 1.4rem; }
-      .donate-form, .donate-side { padding: 1.6rem 1.3rem; }
+        .donate-form, .donate-side { padding: 1.6rem 1.3rem; }
       .donate-wrap { border-radius: 24px; }
       .tabs { width: 100%; }
       .tab { flex: 1; padding: .7rem .5rem; font-size: .88rem; }
@@ -494,7 +493,6 @@
     <symbol id="i-orchid" viewBox="0 0 24 24"><ellipse style="fill:var(--ico-fill,#f3d6c5)" cx="12" cy="7" rx="3" ry="4"/><ellipse style="fill:var(--ico-fill,#f3d6c5)" cx="6.8" cy="11.2" rx="4" ry="2.5" transform="rotate(-18 6.8 11.2)"/><ellipse style="fill:var(--ico-fill,#f3d6c5)" cx="17.2" cy="11.2" rx="4" ry="2.5" transform="rotate(18 17.2 11.2)"/><ellipse style="fill:var(--ico-fill,#f3d6c5)" cx="9.6" cy="16.6" rx="2.2" ry="3.2" transform="rotate(25 9.6 16.6)"/><ellipse style="fill:var(--ico-fill,#f3d6c5)" cx="14.4" cy="16.6" rx="2.2" ry="3.2" transform="rotate(-25 14.4 16.6)"/><path d="M10.6 12.6c0-1 .6-1.6 1.4-1.6s1.4.6 1.4 1.6-.6 1.8-1.4 1.8-1.4-.8-1.4-1.8z" fill="#fff"/></symbol>
     <symbol id="i-doc" viewBox="0 0 24 24"><path style="fill:var(--ico-fill,#f3d6c5)" d="M14 2.8H7a2 2 0 0 0-2 2v14.4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.8z"/><path d="M14 2.8v5h5"/><path d="M8.5 12.5h7M8.5 15.5h4.5"/><path d="M14.6 18.2l1.2 1 2-2.3"/></symbol>
     <symbol id="i-handshake" viewBox="0 0 24 24"><path style="fill:var(--ico-fill,#f3d6c5)" d="M12 6.6 9.5 9a1.3 1.3 0 0 0 1.8 1.9l1.9-1.6 4.9 4.5-3.9 3.7a1.6 1.6 0 0 1-2.2 0L6.2 13.3 3 13.6V6.4l3.3-.9a3.6 3.6 0 0 1 3.1.7z"/><path d="M21 13.6V6.4l-3.3-.9a3.6 3.6 0 0 0-3.1.7L12 8.4"/><path d="M18.1 13.8 21 13.6"/><path d="m9.6 17.1 1.3 1.3M11.7 15.1l1.5 1.5"/></symbol>
-    <symbol id="i-backpack" viewBox="0 0 24 24"><path style="fill:var(--ico-fill,#f3d6c5)" d="M5 10.5A4.5 4.5 0 0 1 9.5 6h5a4.5 4.5 0 0 1 4.5 4.5V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M9.2 6V4.6A1.8 1.8 0 0 1 11 2.8h2a1.8 1.8 0 0 1 1.8 1.8V6"/><path d="M8.5 21v-4.5a1.5 1.5 0 0 1 1.5-1.5h4a1.5 1.5 0 0 1 1.5 1.5V21"/><path d="M9 10.5h6"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path style="fill:var(--ico-fill,#f3d6c5)" d="M4 10.2 12 3.6l8 6.6V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M12 17.4s-3-1.8-3-3.9a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2.1-3 3.9-3 3.9z" fill="#fff"/></symbol>
     <symbol id="i-hands" viewBox="0 0 24 24"><path style="fill:var(--ico-fill,#f3d6c5)" d="M12 10.8s-3.4-2-3.4-4.4A1.9 1.9 0 0 1 12 5.3a1.9 1.9 0 0 1 3.4 1.1c0 2.4-3.4 4.4-3.4 4.4z"/><path d="M2.5 15.5 6 13.2a2.6 2.6 0 0 1 2.6-.2l2.6 1.3a1.3 1.3 0 0 1-1 2.4l-2.4-.7"/><path d="M21.5 15.5 18 13.2a2.6 2.6 0 0 0-2.6-.2l-2.2 1.1"/><path d="M5.2 18.6c2.2 1.6 5.5 2 8.4 1l5.4-2.2"/></symbol>
     <symbol id="i-leaf" viewBox="0 0 24 24"><path style="fill:var(--ico-fill,#f3d6c5)" d="M11 20.2A7 7 0 0 1 9.8 6.3C15.5 5.2 17 4.7 19 2.2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M3 21c0-3 1.9-5.4 5.1-6C10.5 14.5 13 13 14 11.8"/></symbol>
@@ -548,7 +546,7 @@
     <div>
       <span class="eyebrow reveal"><span class="dot"></span> Asociație non-profit · București</span>
       <h1 class="reveal d1">Întindem o mână celor care <em>au nevoie</em>.</h1>
-      <p class="hero-lead reveal d2">Ghiozdane complete pentru copii, sprijin pentru familiile care duc greul în tăcere și zile de bucurie pentru cei mici. Prin generozitatea voastră, transformăm solidaritatea în ajutor concret.</p>
+      <p class="hero-lead reveal d2">Suntem alături de copiii și familiile care duc greul în tăcere, de oamenii rămași fără sprijin și de toți cei care au nevoie de o mână întinsă. Prin generozitatea voastră, transformăm solidaritatea în ajutor concret.</p>
       <div class="hero-ctas reveal d3">
         <a href="#donatie" class="btn btn-donate btn-lg"><span class="heart"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span> Donează acum</a>
         <a href="#proiecte" class="btn btn-ghost btn-lg">Vezi ce am făcut →</a>
@@ -561,18 +559,18 @@
     </div>
 
     <div class="hero-visual reveal d2" aria-hidden="false">
-      <div class="hero-badge"><span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-backpack"/></svg></span><span><b>83 de ghiozdane complete</b>la început de an școlar</span></div>
-      <button class="polaroid p1" data-story="4" data-photo="0" aria-label="Deschide poza: Zi de bucurie și daruri pentru copii">
+      <div class="hero-badge"><span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-hands"/></svg></span><span><b>Ajutor concret</b>pentru oameni aflați în nevoie</span></div>
+      <button class="polaroid p1" data-story="4" data-photo="0" aria-label="Deschide poza: Ziua Copilului">
         <img src="images/proiecte/thumbs/proiect-03.jpg" alt="Copii cu daruri de Ziua Copilului, alături de voluntari" width="640" height="480">
         <figcaption>de 1 Iunie</figcaption>
       </button>
-      <button class="polaroid p3" data-story="3" data-photo="0" aria-label="Deschide poza: Pachete pentru o familie">
-        <img src="images/proiecte/thumbs/proiect-05.jpg" alt="Voluntari cu pachete pentru o familie" width="480" height="640">
-        <figcaption>pentru familii</figcaption>
+      <button class="polaroid p2" data-story="1" data-photo="0" aria-label="Deschide poza: copii alături de voluntari">
+        <img src="images/proiecte/thumbs/proiect-07.jpg" alt="Copii alături de voluntari" width="640" height="480">
+        <figcaption>împreună</figcaption>
       </button>
-      <button class="polaroid p2" data-story="1" data-photo="0" aria-label="Deschide poza: Împreună la început de an școlar">
-        <img src="images/proiecte/thumbs/proiect-10.jpg" alt="Copii cu ghiozdanele noi pentru școală" width="360" height="640">
-        <figcaption>înapoi la școală</figcaption>
+      <button class="polaroid p3" data-story="7" data-photo="0" aria-label="Deschide poza: alături de familii">
+        <img src="images/proiecte/thumbs/proiect-06.jpg" alt="Voluntar în vizită la o familie" width="554" height="637">
+        <figcaption>alături de familii</figcaption>
       </button>
     </div>
   </div>
@@ -608,7 +606,7 @@
 <section class="sec" id="despre">
   <div class="container about-grid">
     <div class="about-photo reveal">
-      <img src="images/proiecte/proiect-07.jpg" alt="Copii cu ghiozdane noi, alături de voluntari" loading="lazy" width="1200" height="900">
+      <img src="images/proiecte/proiect-02.jpg" alt="Voluntari pregătind pachete" loading="lazy" width="675" height="1200">
       <div class="stamp"><b><span style="color:var(--gold)"><svg class="ico" aria-hidden="true"><use href="#i-orchid"/></svg></span> Din 2026</b>înscriși la ANAF pentru deduceri fiscale</div>
     </div>
     <div class="about-text">
@@ -616,7 +614,6 @@
       <h2 class="h2 reveal d1">Oameni simpli care cred că nimeni nu trebuie lăsat în urmă.</h2>
       <p class="reveal d2">Asociația Rugăciunea Orhideei este o organizație non-profit cu sediul în București, dedicată comunităților vulnerabile din România. Credem că fiecare persoană merită sprijin, demnitate și o șansă la un viitor mai bun.</p>
       <p class="reveal d2">Suntem înscriși la ANAF, din <strong>30.03.2026</strong>, în registrul entităților pentru care se acordă deduceri fiscale, ceea ce înseamnă că donațiile și redirecționările către noi beneficiază de deduceri fiscale conform legii.</p>
-      <p class="reveal d2"><strong>Suntem o asociație independentă, fără nicio afiliere religioasă.</strong> Lucrăm cu oameni de bine, oriunde s-ar afla ei — instituții, voluntari sau oameni implicați în comunitățile locale — ca ajutorul să ajungă la copiii și familiile care au cea mai mare nevoie.</p>
       <div class="values">
         <div class="value reveal d1"><span class="ib sm"><svg class="ico" aria-hidden="true"><use href="#i-hands"/></svg></span><h3>Solidaritate</h3><p>Construim punți între oameni și comunități</p></div>
         <div class="value reveal d2"><span class="ib sm"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></span><h3>Empatie</h3><p>Ascultăm cu inimă deschisă, fără judecată</p></div>
@@ -632,28 +629,20 @@
     <div class="sec-head">
       <span class="kicker reveal">Povești din comunitate</span>
       <h2 class="reveal d1">Micile gesturi contează enorm atunci când vin la momentul potrivit.</h2>
-      <p class="reveal d2">În spatele fiecărui proiect sunt oameni reali: copii care încep școala cu zâmbetul pe buze și familii care duc greul în tăcere. Uite câteva dintre poveștile scrise împreună cu voi.</p>
+      <p class="reveal d2">În spatele fiecărui proiect sunt oameni reali: copii, familii care duc greul în tăcere și oameni rămași fără sprijin. Acestea sunt poveștile noastre, așa cum le-am împărtășit pe Instagram.</p>
     </div>
     <p class="partners reveal">Alături de <b>DGASPC București</b>, de oameni inimoși din comunitate și de fiecare dintre voi</p>
 
     <div class="filters reveal" role="group" aria-label="Filtrează poveștile">
       <button class="chip active" data-filter="all">Toate</button>
-      <button class="chip" data-filter="scoala"><svg class="ico" aria-hidden="true"><use href="#i-backpack"/></svg> Școală</button>
+      <button class="chip" data-filter="copii"><svg class="ico" aria-hidden="true"><use href="#i-sparkle"/></svg> Copii</button>
       <button class="chip" data-filter="familii"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg> Familii</button>
-      <button class="chip" data-filter="comunitate"><svg class="ico" aria-hidden="true"><use href="#i-hands"/></svg> Comunitate</button>
+      <button class="chip" data-filter="oameni"><svg class="ico" aria-hidden="true"><use href="#i-hands"/></svg> Oameni în nevoie</button>
     </div>
 
     <div class="stories" id="stories"><!-- generat din STORIES (vezi scriptul de jos) --></div>
     <p class="swipe-hint">Glisează pentru mai multe povești <svg class="ico" aria-hidden="true"><use href="#i-point"/></svg></p>
 
-    <div class="cta-band reveal">
-      <svg class="ico deco" aria-hidden="true"><use href="#i-orchid"/></svg>
-      <div>
-        <h3>Următorul ghiozdan poate fi de la tine.</h3>
-        <p>Ajută-ne să ducem mai departe ce am început.</p>
-      </div>
-      <a href="#donatie" class="btn btn-donate btn-lg"><span class="heart"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span> Vreau să ajut</a>
-    </div>
   </div>
 </section>
 
@@ -684,11 +673,11 @@
         </div>
         <div class="custom-amount" id="customWrap" hidden>
           <label for="customAmount" class="step-label" style="margin:.8rem 0 .4rem">Suma ta</label>
-          <input id="customAmount" type="number" inputmode="numeric" min="5" step="1" placeholder="ex: 75">
+          <input id="customAmount" type="number" inputmode="numeric" min="5" max="50000" step="1" placeholder="ex: 75">
           <span style="top:auto;bottom:1rem;transform:none">lei</span>
         </div>
 
-        <div class="impact" id="impact" aria-live="polite"><span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-backpack"/></svg></span><span>Contribuie la <b>un ghiozdan complet echipat</b> pentru un copil.</span></div>
+        <div class="impact" id="impact" aria-live="polite"><span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg></span><span>Sprijină <b>o familie aflată în dificultate</b>.</span></div>
 
         <span class="step-label">2 · Donează</span>
         <button class="btn btn-donate btn-lg btn-block" id="donateBtnMain"><span class="heart"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span> <span id="donateBtnText">Donează 100 lei</span></button>
@@ -810,10 +799,6 @@
         <p>Pentru Formularul 230 (persoane fizice), termenul este <strong>25 mai</strong> al fiecărui an pentru veniturile anului anterior. Pentru persoanele juridice (firme), termenul este <strong>25 iunie</strong>. Trimite-ne formularul cu cel puțin 1-2 săptămâni înainte de termen, ca să avem timp să-l semnăm și să ți-l trimitem înapoi pentru depunere.</p>
       </details>
       <details class="reveal">
-        <summary>Sunteți o organizație religioasă?</summary>
-        <p>Nu. Asociația Rugăciunea Orhideei este o organizație non-profit independentă, fără nicio afiliere religioasă. Colaborăm cu instituții, voluntari și oameni de bine din comunitățile locale — oricine ne ajută să ajungem la copiii și familiile care au nevoie.</p>
-      </details>
-      <details class="reveal">
         <summary>Plata online este sigură?</summary>
         <p>Da. Plățile cu cardul, Apple Pay și Google Pay sunt procesate de Stripe, unul dintre cei mai mari procesatori de plăți din lume. Datele cardului nu ajung niciodată la noi.</p>
       </details>
@@ -912,18 +897,26 @@
 <div id="paymentModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="payTitle">
   <div class="modal-card">
     <button id="paymentClose" class="modal-close" aria-label="Închide"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
-    <h3 id="payTitle">Donează <span id="modalAmount">100</span> lei</h3>
+    <h3 id="payTitle">Donează <span id="modalAmount">100</span> lei<span class="test-badge" id="testBadge" hidden>MOD TEST</span></h3>
     <p class="sub">Mulțumim că ești alături de noi <span style="color:var(--gold)"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span></p>
     <div id="payment-request-button" style="display:none;margin-bottom:1rem;"></div>
     <form id="payForm">
       <label for="payerName">Numele tău (opțional)</label>
       <input id="payerName" type="text" placeholder="Nume" autocomplete="name">
+      <label for="payerEmail">Email pentru chitanță (opțional)</label>
+      <input id="payerEmail" type="email" placeholder="email@exemplu.ro" autocomplete="email" inputmode="email">
       <label>Date card</label>
       <div id="card-element"></div>
       <button id="payButton" class="btn btn-donate btn-lg btn-block" type="submit">Plătește <span id="payAmountText">100</span> lei</button>
       <p id="paymentMessage" style="display:none;"></p>
     </form>
-    <p class="modal-note"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> Plata este procesată de Stripe. Vei primi confirmare pe email când plata este finalizată.</p>
+    <div class="pay-success" id="paySuccess" hidden>
+      <span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span>
+      <h4>Mulțumim din suflet!</h4>
+      <p>Donația ta de <b><span id="successAmount">100</span> lei</b> a fost primită. Prin generozitatea ta, transformăm solidaritatea în ajutor concret.</p>
+      <button class="btn btn-ghost btn-block" type="button" id="successClose">Închide</button>
+    </div>
+    <p class="modal-note"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> Plata este procesată securizat de Stripe. Datele cardului nu ajung la noi.</p>
   </div>
 </div>
 
@@ -947,35 +940,51 @@
 <script>
   /* ---------- POVEȘTI: editează aici textele, pozele și link-urile de Instagram ---------- */
   var IG = 'https://www.instagram.com/';
+  // Ordinea e cea din Instagram: cea mai nouă postare prima. Postare nouă => adaug-o sus.
   var STORIES = [
-    { date: '4 septembrie 2026', cat: 'scoala', label: 'Școală', link: IG + 'p/Dc3mU0RDb5A/',
-      photos: ['proiect-07.jpg', 'proiect-02.jpg', 'proiect-04.jpg'],
-      title: '51 de ghiozdane, 51 de începuturi de an cu mai multă speranță',
-      text: 'În colaborare cu Direcția Generală de Asistență Socială și Protecția Copilului București, am oferit 51 de ghiozdane complet echipate copiilor care au nevoie de sprijin pentru a începe noul an școlar. Fiecare ghiozdan a fost pregătit cu toate rechizitele și caietele necesare, pentru ca începutul de școală să fie puțin mai ușor și mai frumos pentru fiecare copil. Mulțumim doamnei Crina Florescu pentru implicare și pentru grija față de acești copii.' },
-    { date: '18 septembrie 2026', cat: 'scoala', label: 'Școală', link: IG + 'p/DdbkRN9DRhr/',
+    { date: '18 septembrie 2026', cat: 'copii', label: 'Copii', link: IG + 'p/DdbkRN9DRhr/',
       photos: ['proiect-10.jpg', 'proiect-09.jpg', 'proiect-01.jpg'],
-      title: 'Înapoi la școală: 32 de ghiozdane complete',
-      text: 'Cu ajutorul unor oameni inimoși din comunitate, am pornit din nou în aventura „Înapoi la școală” — și de data asta am pregătit 32 de ghiozdane complete pentru copii minunați, gata să înceapă anul cu zâmbetul pe buze.' },
+      title: 'Am pornit din nou în aventura „Înapoi la școală”',
+      text: 'Cu ajutorul unor oameni inimoși din comunitate, de data asta am pregătit 32 de ghiozdane complete pentru copii minunați, gata să înceapă anul cu zâmbetul pe buze.' },
+    { date: '4 septembrie 2026', cat: 'copii', label: 'Copii', link: IG + 'p/Dc3mU0RDb5A/',
+      photos: ['proiect-07.jpg', 'proiect-02.jpg', 'proiect-04.jpg'],
+      title: '51 de începuturi de an cu mai multă speranță',
+      text: 'În colaborare cu Direcția Generală de Asistență Socială și Protecția Copilului București, am oferit 51 de ghiozdane complet echipate copiilor care au nevoie de sprijin pentru a începe noul an școlar. Mulțumim doamnei Crina Florescu pentru implicare și pentru grija față de acești copii, și tuturor celor care susțin constant proiectele noastre. Prin generozitatea voastră, reușim să transformăm solidaritatea în ajutor concret!' },
     { date: '2 septembrie 2026', cat: 'familii', label: 'Familii', link: IG + 'p/DcymT_Kja2L/',
-      photos: ['proiect-08.jpg'],
+      photos: ['../instagram/DcymT_Kja2L.jpg', 'proiect-08.jpg'],
       title: 'Anul școlar bate la ușă',
-      text: 'Am vrut ca cei doi băieți ai doamnei Daniela să-l întâmpine pregătiți. Le-am pus la punct ghiozdanele cu tot ce le trebuie și le-am completat garderoba cu haine noi, potrivite pentru zilele de școală. Micile gesturi contează enorm atunci când vin la momentul potrivit.' },
+      text: 'Am vrut ca cei doi băieți ai doamnei Daniela să-l întâmpine pregătiți. Le-am pus la punct tot ce le trebuie și le-am completat garderoba cu haine noi, potrivite pentru zilele de școală. Micile gesturi contează enorm atunci când vin la momentul potrivit.' },
+    { date: '24 august 2026', cat: 'oameni', label: 'Oameni', link: IG + 'p/DcbLwOTNQB-/',
+      photos: ['../instagram/DcbLwOTNQB-.jpg'],
+      title: 'Povestea lui Romulus',
+      text: 'Romulus a fost abandonat de părinți, iar viața l-a pus în fața unor încercări extrem de grele. El este dovada că sistemul, de cele mai multe ori, nu reușește să salveze oamenii nevoiași și că singurătatea este la fel ca o boală, care te poate distruge. Astăzi trăiește cu depresie, vorbește foarte greu și nu știe să scrie. În prezent este găzduit într-un centru de noapte din București. Cu toate acestea, Romulus și-a găsit o rază de lumină cântând într-un cor. Acolo găsește liniște, speranță și puterea de a merge mai departe.' },
+    { date: '1 iunie 2026', cat: 'copii', label: 'Copii', link: IG + 'p/DZCrgBMDSEr/',
+      photos: ['proiect-03.jpg', '../instagram/DZCrgBMDSEr.jpg'],
+      title: 'Am sărbătorit copilăria',
+      text: 'De Ziua Copilului ne-am bucurat să fim alături de cei mici și să le oferim câteva clipe speciale, pline de culoare și voie bună. Fiecare râs, fiecare îmbrățișare și fiecare privire plină de entuziasm ne-au amintit cât de important este să păstrăm vie bucuria copilăriei. Le dorim tuturor copiilor să crească frumos, cu încredere, sănătate și multe motive de fericire.' },
+    { date: '1 iunie 2026', cat: 'copii', label: 'Copii', link: IG + 'p/DZCrNiYjdO7/',
+      photos: ['../instagram/DZCrNiYjdO7.jpg'],
+      title: 'La mulți ani tuturor copiilor!',
+      text: 'De Ziua Copilului am avut bucuria să petrecem momente frumoase alături de cei mici, să oferim zâmbete, dulciuri și amintiri care sperăm să rămână mult timp în sufletele lor. Mulțumim tuturor celor care au fost alături de noi și au contribuit la această zi specială.' },
+    { date: '1 iunie 2026', cat: 'copii', label: 'Copii', link: IG + 'p/DZCqtnKDUqI/',
+      photos: ['../instagram/DZCqtnKDUqI.jpg'],
+      title: 'Cele mai bune cadouri pentru copii',
+      text: 'La mulți ani tuturor copiilor!' },
+    { date: '25 mai 2026', cat: 'familii', label: 'Familii', link: IG + 'reel/DYxIozBNCOh/',
+      photos: ['proiect-06.jpg'],
+      title: 'Poveri pe care puțini și le-ar putea imagina',
+      text: 'Doamna Livia muncește zi de zi pentru a ține casa împreună, în timp ce soțul ei se luptă cu cancerul. Împreună cresc cinci copii, dintre care o fetiță diagnosticată cu tetrapareză spastică și un băiat surdo-mut, ambii având nevoie de îngrijire constantă. În spatele fiecărei zile există tratamente, drumuri și multă putere. Prin acest proiect vrem să fim alături de ei.' },
     { date: '25 mai 2026', cat: 'familii', label: 'Familii', link: IG + 'p/DYxFQ26jVYb/',
       photos: ['proiect-05.jpg'],
       title: 'Opt copii, o singură casă',
-      text: 'Doamna Daniela crește opt copii și se confruntă cu dificultăți financiare care depășesc orice limită obișnuită. Printre greutățile zilnice se numără îngrijirea unui copil cu ADHD și trăsături de autism, dar și a unui nepot cu hidrocefalie congenitală severă, care necesită atenție constantă. În spatele acestor cuvinte sunt nopți nedormite și o familie care încearcă să meargă mai departe. Orice gest contează.' },
-    { date: '1 iunie 2026', cat: 'comunitate', label: 'Comunitate', link: IG + 'p/DZCrgBMDSEr/',
-      photos: ['proiect-03.jpg'],
-      title: 'Am sărbătorit copilăria',
-      text: 'De Ziua Copilului ne-am bucurat să fim alături de cei mici și să le oferim câteva clipe speciale, pline de culoare și voie bună. Fiecare râs, fiecare îmbrățișare și fiecare privire plină de entuziasm ne-au amintit cât de important este să păstrăm vie bucuria copilăriei. La mulți ani tuturor copiilor și copilului din fiecare dintre noi!' },
-    { date: '', cat: 'familii', label: 'Familii', link: IG + 'rugaciuneaorhideei/',
-      photos: ['proiect-06.jpg'],
-      title: 'Alături de familiile care duc greul în tăcere',
-      text: 'Există familii care duc în tăcere poveri pe care puțini și le-ar putea imagina. Mergem în casele lor, îi ascultăm și căutăm împreună soluții, pentru că în spatele fiecărei zile sunt tratamente, drumuri și multă putere.' }
+      text: 'Doamna Daniela crește opt copii și se confruntă cu dificultăți financiare care depășesc orice limită obișnuită. Printre greutățile zilnice se numără îngrijirea unui copil cu ADHD și trăsături de autism, dar și a unui nepot cu hidrocefalie congenitală severă, care necesită atenție constantă. În spatele acestor cuvinte sunt nopți nedormite și o familie care încearcă să meargă mai departe. Orice gest contează.' }
   ];
 
   function icon(name){ return '<svg class="ico" aria-hidden="true"><use href="#i-' + name + '"/></svg>'; }
-  var CAT_ICON = { scoala: 'backpack', familii: 'home', comunitate: 'hands' };
+  var CAT_ICON = { copii: 'sparkle', familii: 'home', oameni: 'hands' };
+
+  function thumbSrc(ph){ return ph.indexOf('/') >= 0 ? 'images/proiecte/' + ph : 'images/proiecte/thumbs/' + ph; }
+  function fullSrc(ph){ return 'images/proiecte/' + ph; }
 
   (function buildStories(){
     var wrap = document.getElementById('stories');
@@ -984,13 +993,13 @@
       a.className = 'story reveal' + (i % 3 === 1 ? ' d1' : i % 3 === 2 ? ' d2' : '');
       a.dataset.cat = st.cat;
       var thumbs = st.photos.length > 1 ? '<div class="story-thumbs">' + st.photos.map(function(ph, k){
-        return '<button data-story="' + i + '" data-photo="' + k + '" aria-label="Poza ' + (k + 1) + '"><img src="images/proiecte/thumbs/' + ph + '" alt="" loading="lazy"></button>';
+        return '<button data-story="' + i + '" data-photo="' + k + '" aria-label="Poza ' + (k + 1) + '"><img src="' + thumbSrc(ph) + '" alt="" loading="lazy"></button>';
       }).join('') + '</div>' : '';
       a.innerHTML =
         '<header class="story-head"><span class="av"><img src="images/logo-320.jpg" alt=""></span><div><b>rugaciuneaorhideei</b>' + (st.date ? '<small>' + st.date + '</small>' : '<small>București</small>') + '</div>' +
           '<span class="story-tag">' + icon(CAT_ICON[st.cat]) + st.label + '</span></header>' +
         '<button class="story-media" data-story="' + i + '" data-photo="0" aria-label="Deschide pozele: ' + st.title + '">' +
-          '<img src="images/proiecte/thumbs/' + st.photos[0] + '" alt="' + st.title + '" loading="lazy">' +
+          '<img src="' + thumbSrc(st.photos[0]) + '" alt="' + st.title + '" loading="lazy">' +
           (st.photos.length > 1 ? '<span class="count">1 / ' + st.photos.length + '</span>' : '') + '</button>' +
         thumbs +
         '<div class="story-body"><h3>' + st.title + '</h3><p class="story-text clamp">' + st.text + '</p><button class="story-more">Citește tot</button></div>' +
@@ -1029,7 +1038,7 @@
     lbImg.classList.add('swap');
     var img = new Image();
     img.onload = function(){ lbImg.src = img.src; lbImg.alt = st.title; lbImg.classList.remove('swap'); };
-    img.src = 'images/proiecte/' + ph;
+    img.src = fullSrc(ph);
     document.getElementById('lbCap').textContent = st.title;
     document.getElementById('lbNum').textContent = st.label.toUpperCase() + (st.date ? ' · ' + st.date.toUpperCase() : '') + (st.photos.length > 1 ? ' · ' + (lbPhoto + 1) + ' / ' + st.photos.length : '');
     var multi = st.photos.length > 1 || STORIES.length > 1;
@@ -1130,11 +1139,11 @@
 
   /* ---------- DONAȚIE: sume ---------- */
   var IMPACT = {
-    '20':  ['pencil',   'Contribuie la <b>rechizitele</b> unui copil.'],
-    '50':  ['package',  'Ajută la <b>un pachet cu alimente</b> pentru o familie.'],
-    '100': ['backpack', 'Contribuie la <b>un ghiozdan complet echipat</b> pentru un copil.'],
-    '200': ['book',     'Susține <b>un copil la început de an școlar</b>.'],
-    '500': ['orchid',   'Susține <b>un proiect întreg</b> pentru comunitate.'],
+    '20':  ['package', 'Ajută la <b>alimente de bază</b> pentru o familie.'],
+    '50':  ['package', 'Contribuie la <b>un pachet cu alimente și produse de igienă</b>.'],
+    '100': ['home',    'Sprijină <b>o familie aflată în dificultate</b>.'],
+    '200': ['hands',   'Ajută <b>un om aflat în nevoie</b> să treacă mai ușor peste o perioadă grea.'],
+    '500': ['orchid',  'Susține <b>un proiect întreg</b> pentru comunitate.'],
     'custom': ['heart', '<b>Orice sumă contează.</b> Mulțumim din suflet!']
   };
   var selectedAmount = '100';
@@ -1170,7 +1179,7 @@
   });
   customInput.addEventListener('input', function(){
     var v = parseInt(customInput.value, 10);
-    selectedAmount = v >= 5 ? String(v) : '';
+    selectedAmount = v >= 5 && v <= 50000 ? String(v) : '';
     updateAmountUI();
   });
   document.getElementById('donateBtnMain').addEventListener('click', function(){
@@ -1178,7 +1187,7 @@
       customWrap.hidden = false; customInput.focus();
       customInput.style.borderColor = '#d9534f';
       setTimeout(function(){ customInput.style.borderColor = ''; }, 1500);
-      document.getElementById('impact').innerHTML = '<span class="ib">' + icon('point') + '</span><span>Introdu o sumă de <b>minim 5 lei</b>.</span>';
+      document.getElementById('impact').innerHTML = '<span class="ib">' + icon('point') + '</span><span>Introdu o sumă de <b>între 5 și 50.000 lei</b>.</span>';
       return;
     }
     openCardPay();
@@ -1196,7 +1205,8 @@
   });
 
   // -------- Stripe integration (frontend) --------
-  // Replace with your Stripe publishable key
+  // Cheia publicabilă vine din Netlify (variabila STRIPE_PUBLISHABLE_KEY, prin /config).
+  // Valoarea de mai jos (test) e folosită doar dacă variabila nu e setată.
   var STRIPE_PUBLISHABLE_KEY = 'pk_test_51TcqeVRuzS3AlB9nkqnuGwUWjdBfStaljk7MhOyWTPQZB69gpzzZK8Iu2w5IRvxFx4QTZQMHrrw7ViG3pkDAyMdX00n65DDjzN';
   var stripe = null;
   var elements = null;
@@ -1206,12 +1216,19 @@
   async function openCardPay(e){
     if(e && e.preventDefault) e.preventDefault();
     if(!stripe){
-      if(STRIPE_PUBLISHABLE_KEY.indexOf('REPLACE_') === 0){
-        alert('Adaugă cheia publicabilă Stripe în cod (variabila STRIPE_PUBLISHABLE_KEY). Vezi README pentru instrucțiuni.');
+      if(typeof Stripe === 'undefined'){
+        alert('Nu am putut încărca sistemul de plată. Dezactivează blocarea reclamelor pentru acest site sau folosește transferul bancar.');
         return;
       }
+      try {
+        var cfg = await (await fetch('/config')).json();
+        if(cfg && cfg.publishableKey) STRIPE_PUBLISHABLE_KEY = cfg.publishableKey;
+      } catch(err) { console.warn('Config indisponibil, folosesc cheia implicită.'); }
       stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+      document.getElementById('testBadge').hidden = STRIPE_PUBLISHABLE_KEY.indexOf('pk_test') !== 0;
     }
+    document.getElementById('payForm').hidden = false;
+    document.getElementById('paySuccess').hidden = true;
     document.getElementById('modalAmount').textContent = selectedAmount;
     document.getElementById('payAmountText').textContent = selectedAmount;
     document.getElementById('paymentMessage').style.display = 'none';
@@ -1320,9 +1337,9 @@
         paymentRequest.on('paymentmethod', async function(ev){
           console.log('Payment method received from Payment Request');
           // Confirm the PaymentIntent with the payment method from the Payment Request
-          const resp = await stripe.confirmCardPayment(currentClientSecret, {
-            payment_method: ev.paymentMethod.id
-          }, {handleActions:false});
+          var prData = { payment_method: ev.paymentMethod.id };
+          if(ev.payerEmail) prData.receipt_email = ev.payerEmail;
+          const resp = await stripe.confirmCardPayment(currentClientSecret, prData, {handleActions:false});
 
           if(resp.error){
             console.error('Payment failed:', resp.error);
@@ -1358,13 +1375,15 @@
         document.getElementById('payButton').disabled = true;
         showPaymentMessage('Se procesează plata...');
         const name = document.getElementById('payerName').value || '';
+        const email = (document.getElementById('payerEmail').value || '').trim();
 
         try {
           const result = await stripe.confirmCardPayment(currentClientSecret, {
             payment_method: {
               card: cardElement,
-              billing_details: {name: name}
-            }
+              billing_details: email ? {name: name, email: email} : {name: name}
+            },
+            receipt_email: email || undefined
           });
 
           console.log('Card payment result:', result);
@@ -1379,7 +1398,7 @@
               showSuccess();
             } else {
               console.log('Payment processed with status:', result.paymentIntent.status);
-              showPaymentMessage('Plata a fost procesată. Status: ' + result.paymentIntent.status);
+              showPaymentMessage('Plata este în curs de procesare. Vei primi confirmarea în curând.');
             }
           }
         } catch(err) {
@@ -1398,9 +1417,13 @@
     var el = document.getElementById('paymentMessage'); el.textContent = msg; el.style.display = msg ? '' : 'none';
   }
   function showSuccess(){
-    showPaymentMessage('Mulțumim din suflet! Donația a fost procesată cu succes.');
-    setTimeout(closePayModal, 2200);
+    showPaymentMessage('');
+    document.getElementById('successAmount').textContent = selectedAmount;
+    document.getElementById('payForm').hidden = true;
+    document.getElementById('payment-request-button').style.display = 'none';
+    document.getElementById('paySuccess').hidden = false;
   }
+  document.getElementById('successClose').addEventListener('click', closePayModal);
 
   /* COOKIE CONSENT */
   function initCookieConsent(){
