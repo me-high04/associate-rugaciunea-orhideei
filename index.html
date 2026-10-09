@@ -645,7 +645,7 @@
   <div class="container">
     <div class="donate-wrap reveal">
       <div class="donate-side">
-        <img src="images/proiecte/proiect-10.jpg" alt="" loading="lazy">
+        <img src="images/proiecte/proiect-07.jpg" alt="" loading="lazy">
         <h2>Susține misiunea noastră</h2>
         <p>Donația ta, oricât de mică, face diferența în viața cuiva din comunitate.</p>
         <ul>
@@ -1196,7 +1196,7 @@
       var data = await res.json();
       if(res.ok && data.url){ window.location.href = data.url; return; }
       console.error('Checkout error:', data);
-      err.textContent = (data.error || 'Nu am putut porni plata.') + (data.code ? ' (cod: ' + data.code + ')' : '');
+      err.textContent = data.error || 'Nu am putut porni plata.';
     } catch(e) {
       console.error('Checkout exception:', e);
       err.textContent = 'Nu am putut porni plata. Verifică conexiunea sau folosește transferul bancar.';

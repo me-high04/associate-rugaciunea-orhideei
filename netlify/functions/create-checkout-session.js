@@ -32,6 +32,8 @@ exports.handler = async (event) => {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       submit_type: 'donate',
+      // cardul cere explicit; Apple Pay / Google Pay apar automat peste card, dacă sunt pornite în Stripe
+      payment_method_types: ['card'],
       locale: 'ro',
       line_items: [{
         quantity: 1,
