@@ -58,7 +58,8 @@ exports.handler = async (event) => {
     // Codul Stripe nu conține date sensibile și ajută la diagnosticare.
     return json(500, {
       error: 'Nu am putut porni plata. Încearcă din nou sau folosește transferul bancar.',
-      code: error.code || error.type || 'unknown'
+      code: error.code || error.type || 'unknown',
+      detail: error.message // nu se afișează pe pagină; util pentru diagnosticare
     });
   }
 };
