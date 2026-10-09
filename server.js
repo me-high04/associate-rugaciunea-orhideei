@@ -3,8 +3,7 @@ const express = require('express');
 const path = require('path');
 
 // Folosim exact aceleași funcții ca pe Netlify, ca testul local să fie identic cu producția.
-const createPaymentIntent = require('./netlify/functions/create-payment-intent');
-const config = require('./netlify/functions/config');
+const createCheckoutSession = require('./netlify/functions/create-checkout-session');
 
 if(!process.env.STRIPE_SECRET_KEY){
   console.error('⚠️  Warning: STRIPE_SECRET_KEY not set in environment. Create a .env file with STRIPE_SECRET_KEY=sk_test_...');
@@ -19,25 +18,23 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 const run = (handler) => async (req, res) => {
-  const result = await handler({ httpMethod: req.method, body: JSON.stringify(req.body || {}) });
+  const result = await handler({ httpMethod: req.method, headers: req.headers, body: JSON.stringify(req.body || {}) });
   res.status(result.statusCode).set(result.headers || {}).send(result.body);
 };
 
-app.post('/create-payment-intent', run(createPaymentIntent.handler));
-app.get('/config', run(config.handler));
+app.post('/create-checkout-session', run(createCheckoutSession.handler));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
-    hasStripeKey: !!process.env.STRIPE_SECRET_KEY,
-    hasPublishableKey: !!process.env.STRIPE_PUBLISHABLE_KEY
+    hasStripeKey: !!process.env.STRIPE_SECRET_KEY
   });
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`\n🚀 Server listening on http://localhost:${PORT}`);
-  console.log(`📊 API endpoint: POST http://localhost:${PORT}/create-payment-intent`);
+  console.log(`📊 API endpoint: POST http://localhost:${PORT}/create-checkout-session`);
   console.log(`💚 Health check: GET http://localhost:${PORT}/health\n`);
 });

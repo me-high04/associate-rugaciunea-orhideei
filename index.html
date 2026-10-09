@@ -183,8 +183,8 @@
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3.5rem; align-items: center; }
-    .about-photo { position: relative; }
-    .about-photo img { border-radius: 24px; box-shadow: var(--shadow-lg); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+    .about-photo { position: relative; max-width: 380px; width: 100%; justify-self: center; }
+    .about-photo img { border-radius: 24px; box-shadow: var(--shadow-lg); width: 100%; height: auto; }
     .about-photo .stamp {
       position: absolute; right: -18px; bottom: 28px; background: #fff; border-radius: 18px; padding: 1rem 1.1rem; box-shadow: var(--shadow);
       max-width: 220px; font-size: .85rem; color: var(--ink-soft);
@@ -376,24 +376,18 @@
     .mobile-bar .btn { flex: 1; min-height: 50px; padding: .7rem 1rem; font-size: 1rem; }
     .mobile-bar .btn-ghost { flex: 0 0 auto; }
 
-    /* PAYMENT MODAL */
+    .pay-error { margin-top: .8rem; font-size: .88rem; color: #a33a2a; text-align: center; }
+    .btn[aria-busy="true"] { opacity: .75; pointer-events: none; }
+    /* THANK-YOU MODAL */
     .modal { position: fixed; inset: 0; background: rgba(30, 18, 10, .55); z-index: 3000; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
     .modal-card { background: #fff; border-radius: 24px; max-width: 480px; width: 100%; padding: 1.8rem; position: relative; box-shadow: var(--shadow-lg); animation: pop .25s ease; max-height: calc(100vh - 32px); overflow-y: auto; }
     @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
     .modal-card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; margin-bottom: .2rem; }
-    .modal-card .sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.2rem; }
     .modal-close { display: grid; place-items: center; position: absolute; right: 14px; top: 14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--bg); font-size: 1.1rem; cursor: pointer; color: var(--ink); }
-    .modal-card label { display: block; margin: .3rem 0 .35rem; font-size: .85rem; font-weight: 700; color: var(--ink-soft); }
-    .modal-card input[type=text], .modal-card input[type=email] { width: 100%; padding: .85rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; margin-bottom: .8rem; font-size: 1rem; font-family: inherit; }
-    .modal-card input[type=text]:focus, .modal-card input[type=email]:focus { outline: none; border-color: var(--brand); }
-    #card-element { padding: .95rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; margin-bottom: 1rem; }
-    .test-badge { display: inline-block; margin-left: .4rem; vertical-align: middle; font-family: 'Lato', sans-serif; font-size: .65rem; font-weight: 900; letter-spacing: .1em; background: #fff3cd; color: #7a5a00; border: 1px solid #f0d58a; border-radius: 999px; padding: .2rem .55rem; }
     .pay-success { text-align: center; padding: 1rem 0 .4rem; }
     .pay-success .ib { width: 76px; height: 76px; margin: 0 auto 1rem; } .pay-success .ib .ico { width: 38px; height: 38px; }
     .pay-success h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: .4rem; }
     .pay-success p { color: var(--ink-soft); margin-bottom: 1.2rem; }
-    #paymentMessage { margin-top: .7rem; font-size: .9rem; color: var(--ink-soft); text-align: center; }
-    .modal-note { font-size: .8rem; color: var(--muted); margin-top: .8rem; text-align: center; }
 
     /* COOKIE */
     .cookie-consent-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; max-width: 760px; margin: 0 auto; background: #2a1c14; color: #fff; padding: 1.2rem 1.4rem; border-radius: 20px; display: none; z-index: 2500; box-shadow: var(--shadow-lg); }
@@ -415,7 +409,7 @@
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-visual { height: 440px; max-width: 560px; width: 100%; margin: 0 auto; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photo { max-width: 460px; margin: 0 auto; }
+      .about-photo { max-width: 340px; margin: 0 auto; }
       .donate-wrap { grid-template-columns: 1fr; }
       .donate-side { min-height: 320px; }
       .stories { grid-template-columns: repeat(2, 1fr); }
@@ -606,7 +600,7 @@
 <section class="sec" id="despre">
   <div class="container about-grid">
     <div class="about-photo reveal">
-      <img src="images/proiecte/proiect-02.jpg" alt="Voluntari pregătind pachete" loading="lazy" width="675" height="1200">
+      <img src="images/proiecte/proiect-06.jpg" alt="Voluntar în vizită la o familie" loading="lazy" width="554" height="637">
       <div class="stamp"><b><span style="color:var(--gold)"><svg class="ico" aria-hidden="true"><use href="#i-orchid"/></svg></span> Din 2026</b>înscriși la ANAF pentru deduceri fiscale</div>
     </div>
     <div class="about-text">
@@ -651,7 +645,7 @@
   <div class="container">
     <div class="donate-wrap reveal">
       <div class="donate-side">
-        <img src="images/proiecte/proiect-09.jpg" alt="" loading="lazy">
+        <img src="images/proiecte/proiect-10.jpg" alt="" loading="lazy">
         <h2>Susține misiunea noastră</h2>
         <p>Donația ta, oricât de mică, face diferența în viața cuiva din comunitate.</p>
         <ul>
@@ -682,7 +676,8 @@
         <span class="step-label">2 · Donează</span>
         <button class="btn btn-donate btn-lg btn-block" id="donateBtnMain"><span class="heart"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span> <span id="donateBtnText">Donează 100 lei</span></button>
         <div class="pay-methods" aria-label="Metode de plată acceptate"><span><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg> Card</span><span><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Apple Pay</span><span><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Google Pay</span></div>
-        <p class="secure"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> Plată criptată · Nu stocăm datele cardului</p>
+        <p class="pay-error" id="payError" role="alert" hidden></p>
+        <p class="secure"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> Vei fi dus pe pagina securizată Stripe · Nu stocăm datele cardului</p>
 
         <details class="bank">
           <summary><span style="display:inline-flex;align-items:center;gap:.5rem"><span class="ib sm"><svg class="ico" aria-hidden="true"><use href="#i-bank"/></svg></span> Preferi transfer bancar?</span></summary>
@@ -893,30 +888,16 @@
   </div>
 </div>
 
-<!-- Payment modal (hidden by default) -->
-<div id="paymentModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+<!-- Mulțumire după întoarcerea de pe Stripe -->
+<div id="thanksModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
   <div class="modal-card">
-    <button id="paymentClose" class="modal-close" aria-label="Închide"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
-    <h3 id="payTitle">Donează <span id="modalAmount">100</span> lei<span class="test-badge" id="testBadge" hidden>MOD TEST</span></h3>
-    <p class="sub">Mulțumim că ești alături de noi <span style="color:var(--gold)"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span></p>
-    <div id="payment-request-button" style="display:none;margin-bottom:1rem;"></div>
-    <form id="payForm">
-      <label for="payerName">Numele tău (opțional)</label>
-      <input id="payerName" type="text" placeholder="Nume" autocomplete="name">
-      <label for="payerEmail">Email pentru chitanță (opțional)</label>
-      <input id="payerEmail" type="email" placeholder="email@exemplu.ro" autocomplete="email" inputmode="email">
-      <label>Date card</label>
-      <div id="card-element"></div>
-      <button id="payButton" class="btn btn-donate btn-lg btn-block" type="submit">Plătește <span id="payAmountText">100</span> lei</button>
-      <p id="paymentMessage" style="display:none;"></p>
-    </form>
-    <div class="pay-success" id="paySuccess" hidden>
+    <button class="modal-close" id="thanksClose" aria-label="Închide"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <div class="pay-success">
       <span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span>
-      <h4>Mulțumim din suflet!</h4>
-      <p>Donația ta de <b><span id="successAmount">100</span> lei</b> a fost primită. Prin generozitatea ta, transformăm solidaritatea în ajutor concret.</p>
-      <button class="btn btn-ghost btn-block" type="button" id="successClose">Închide</button>
+      <h4 id="thanksTitle">Mulțumim din suflet!</h4>
+      <p>Donația ta<span id="thanksAmount"></span> a fost primită. Prin generozitatea ta, transformăm solidaritatea în ajutor concret.</p>
+      <button class="btn btn-ghost btn-block" type="button" id="thanksOk">Închide</button>
     </div>
-    <p class="modal-note"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> Plata este procesată securizat de Stripe. Datele cardului nu ajung la noi.</p>
   </div>
 </div>
 
@@ -934,8 +915,6 @@
   </div>
 </div>
 
-<!-- Load Stripe.js -->
-<script src="https://js.stripe.com/v3/"></script>
 
 <script>
   /* ---------- POVEȘTI: editează aici textele, pozele și link-urile de Instagram ---------- */
@@ -1068,8 +1047,8 @@
       if(e.key === 'Escape') closeLb();
       if(e.key === 'ArrowLeft') stepLb(-1);
       if(e.key === 'ArrowRight') stepLb(1);
-    } else if(e.key === 'Escape' && document.getElementById('paymentModal').style.display === 'flex'){
-      closePayModal();
+    } else if(e.key === 'Escape' && document.getElementById('thanksModal').style.display === 'flex'){
+      closeThanks();
     }
   });
   (function swipe(){
@@ -1156,8 +1135,6 @@
   function updateAmountUI(){
     var txt = selectedAmount ? 'Donează ' + selectedAmount + ' lei' : 'Alege o sumă';
     document.getElementById('donateBtnText').textContent = txt;
-    document.getElementById('payAmountText').textContent = selectedAmount;
-    document.getElementById('modalAmount').textContent = selectedAmount;
   }
   function selectAmount(btn, amount){
     document.querySelectorAll('.amount-btn').forEach(function(b){ b.classList.remove('selected'); });
@@ -1190,7 +1167,7 @@
       document.getElementById('impact').innerHTML = '<span class="ib">' + icon('point') + '</span><span>Introdu o sumă de <b>între 5 și 50.000 lei</b>.</span>';
       return;
     }
-    openCardPay();
+    startCheckout();
   });
 
   /* ---------- COPY ---------- */
@@ -1204,226 +1181,46 @@
     });
   });
 
-  // -------- Stripe integration (frontend) --------
-  // Cheia publicabilă vine din Netlify (variabila STRIPE_PUBLISHABLE_KEY, prin /config).
-  // Valoarea de mai jos (test) e folosită doar dacă variabila nu e setată.
-  var STRIPE_PUBLISHABLE_KEY = 'pk_test_51TcqeVRuzS3AlB9nkqnuGwUWjdBfStaljk7MhOyWTPQZB69gpzzZK8Iu2w5IRvxFx4QTZQMHrrw7ViG3pkDAyMdX00n65DDjzN';
-  var stripe = null;
-  var elements = null;
-  var cardElement = null;
-  var currentClientSecret = null;
-
-  async function openCardPay(e){
-    if(e && e.preventDefault) e.preventDefault();
-    if(!stripe){
-      if(typeof Stripe === 'undefined'){
-        alert('Nu am putut încărca sistemul de plată. Dezactivează blocarea reclamelor pentru acest site sau folosește transferul bancar.');
-        return;
-      }
-      try {
-        var cfg = await (await fetch('/config')).json();
-        if(cfg && cfg.publishableKey) STRIPE_PUBLISHABLE_KEY = cfg.publishableKey;
-      } catch(err) { console.warn('Config indisponibil, folosesc cheia implicită.'); }
-      stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-      document.getElementById('testBadge').hidden = STRIPE_PUBLISHABLE_KEY.indexOf('pk_test') !== 0;
-    }
-    document.getElementById('payForm').hidden = false;
-    document.getElementById('paySuccess').hidden = true;
-    document.getElementById('modalAmount').textContent = selectedAmount;
-    document.getElementById('payAmountText').textContent = selectedAmount;
-    document.getElementById('paymentMessage').style.display = 'none';
-    document.getElementById('payButton').disabled = false;
-    document.getElementById('paymentModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    await setupPaymentElements();
-  }
-
-  function closePayModal(){
-    document.getElementById('paymentModal').style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  document.getElementById('paymentClose').addEventListener('click', closePayModal);
-  document.getElementById('paymentModal').addEventListener('click', function(e){ if(e.target === this) closePayModal(); });
-
-  async function createPaymentIntent(amount) {
-    try{
-      console.log('Creating payment intent for amount:', amount);
-      var res = await fetch('/create-payment-intent', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ amount: amount })
-      });
-      if(!res.ok) {
-        console.error('Server returned:', res.status);
-        throw new Error('Server error: ' + res.status);
-      }
-      var data = await res.json();
-      console.log('Payment intent created:', data);
-      return data;
-    } catch(err){
-      console.error('Error creating payment intent:', err);
-      showPaymentMessage('Eroare conexiune. Asigură-te că serverul rulează și SECRET KEY este configurat.');
-      return null;
-    }
-  }
-
-  async function setupPaymentElements(){
+  // -------- Stripe Checkout --------
+  // Butonul cere serverului o sesiune Stripe Checkout și trimite donatorul pe pagina de plată Stripe.
+  async function startCheckout(){
+    var btn = document.getElementById('donateBtnMain'), err = document.getElementById('payError');
+    err.hidden = true;
+    btn.setAttribute('aria-busy', 'true');
+    document.getElementById('donateBtnText').textContent = 'Se deschide plata…';
     try {
-      var amountLei = parseInt(selectedAmount || '100',10);
-      var amountBani = amountLei * 100; // Stripe amounts are in the smallest currency unit
-      console.log('Setting up payment for:', amountLei, 'lei');
-
-      showPaymentMessage('Se preiau detaliile plății...');
-      var data = await createPaymentIntent(amountBani);
-
-      if(!data || !data.clientSecret){
-        console.error('No client secret received');
-        showPaymentMessage('Eroare: Nu s-a putut inițializa plata. Încearcă mai târziu.');
-        return;
-      }
-      currentClientSecret = data.clientSecret;
-      showPaymentMessage('');
-
-      if(!elements) {
-        elements = stripe.elements();
-      }
-
-      // Card element
-      if(cardElement) { cardElement.destroy(); cardElement = null; }
-      cardElement = elements.create('card', {
-        style: {
-          base: {
-            fontSize: '16px',
-            color: '#3a2418',
-            fontFamily: 'Lato, sans-serif',
-            '::placeholder': {
-              color: '#b29a8a',
-            },
-          },
-          invalid: {
-            color: '#d9534f',
-          },
-        }
+      var res = await fetch('/create-checkout-session', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: parseInt(selectedAmount, 10) })
       });
-      cardElement.mount('#card-element');
-      console.log('Card element mounted');
-
-      // Payment Request Button (Apple Pay / Google Pay)
-      try {
-        var paymentRequest = stripe.paymentRequest({
-          country: 'RO',
-          currency: 'ron',
-          total: {label: 'Donație', amount: amountBani},
-          requestPayerName: true,
-          requestPayerEmail: true
-        });
-        var prButton = elements.getElement('paymentRequestButton');
-        if(prButton) prButton.destroy();
-        prButton = elements.create('paymentRequestButton', {paymentRequest: paymentRequest});
-
-        paymentRequest.canMakePayment().then(function(result){
-          if(result){
-            console.log('Payment request available:', result);
-            document.getElementById('payment-request-button').style.display = 'block';
-            prButton.mount('#payment-request-button');
-          } else {
-            document.getElementById('payment-request-button').style.display = 'none';
-          }
-        }).catch(function(err) {
-          console.warn('Payment request not available:', err);
-          document.getElementById('payment-request-button').style.display = 'none';
-        });
-
-        paymentRequest.on('paymentmethod', async function(ev){
-          console.log('Payment method received from Payment Request');
-          // Confirm the PaymentIntent with the payment method from the Payment Request
-          var prData = { payment_method: ev.paymentMethod.id };
-          if(ev.payerEmail) prData.receipt_email = ev.payerEmail;
-          const resp = await stripe.confirmCardPayment(currentClientSecret, prData, {handleActions:false});
-
-          if(resp.error){
-            console.error('Payment failed:', resp.error);
-            ev.complete('fail');
-            showPaymentMessage(resp.error.message);
-          }
-          else {
-            ev.complete('success');
-            console.log('Payment Intent status:', resp.paymentIntent.status);
-            if(resp.paymentIntent.status === 'requires_action'){
-              const final = await stripe.confirmCardPayment(currentClientSecret);
-              if(final.error) {
-                console.error('Action failed:', final.error);
-                showPaymentMessage(final.error.message);
-                return;
-              }
-            }
-            showSuccess();
-          }
-        });
-      } catch(err) {
-        console.warn('Payment Request setup failed:', err);
-      }
-
-      // Form submit (card)
-      var form = document.getElementById('payForm');
-      if(form.onsubmit) {
-        form.onsubmit = null; // Clear old handler
-      }
-      form.onsubmit = async function(e){
-        e.preventDefault();
-        console.log('Card form submitted');
-        document.getElementById('payButton').disabled = true;
-        showPaymentMessage('Se procesează plata...');
-        const name = document.getElementById('payerName').value || '';
-        const email = (document.getElementById('payerEmail').value || '').trim();
-
-        try {
-          const result = await stripe.confirmCardPayment(currentClientSecret, {
-            payment_method: {
-              card: cardElement,
-              billing_details: email ? {name: name, email: email} : {name: name}
-            },
-            receipt_email: email || undefined
-          });
-
-          console.log('Card payment result:', result);
-          if(result.error){
-            console.error('Card payment error:', result.error);
-            showPaymentMessage(result.error.message);
-            document.getElementById('payButton').disabled = false;
-          }
-          else {
-            if(result.paymentIntent && result.paymentIntent.status === 'succeeded'){
-              console.log('Payment succeeded');
-              showSuccess();
-            } else {
-              console.log('Payment processed with status:', result.paymentIntent.status);
-              showPaymentMessage('Plata este în curs de procesare. Vei primi confirmarea în curând.');
-            }
-          }
-        } catch(err) {
-          console.error('Card payment exception:', err);
-          showPaymentMessage('Eroare: ' + err.message);
-          document.getElementById('payButton').disabled = false;
-        }
-      };
-    } catch(err) {
-      console.error('Setup payment elements error:', err);
-      showPaymentMessage('Eroare neprevăzută. Consultă consola pentru detalii.');
+      var data = await res.json();
+      if(res.ok && data.url){ window.location.href = data.url; return; }
+      console.error('Checkout error:', data);
+      err.textContent = (data.error || 'Nu am putut porni plata.') + (data.code ? ' (cod: ' + data.code + ')' : '');
+    } catch(e) {
+      console.error('Checkout exception:', e);
+      err.textContent = 'Nu am putut porni plata. Verifică conexiunea sau folosește transferul bancar.';
     }
+    err.hidden = false;
+    btn.removeAttribute('aria-busy');
+    updateAmountUI();
   }
+  // dacă donatorul revine cu „înapoi” din Stripe, butonul trebuie să fie din nou activ
+  window.addEventListener('pageshow', function(){ document.getElementById('donateBtnMain').removeAttribute('aria-busy'); updateAmountUI(); });
 
-  function showPaymentMessage(msg){
-    var el = document.getElementById('paymentMessage'); el.textContent = msg; el.style.display = msg ? '' : 'none';
-  }
-  function showSuccess(){
-    showPaymentMessage('');
-    document.getElementById('successAmount').textContent = selectedAmount;
-    document.getElementById('payForm').hidden = true;
-    document.getElementById('payment-request-button').style.display = 'none';
-    document.getElementById('paySuccess').hidden = false;
-  }
-  document.getElementById('successClose').addEventListener('click', closePayModal);
+  function closeThanks(){ document.getElementById('thanksModal').style.display = 'none'; document.body.style.overflow = ''; }
+  document.getElementById('thanksClose').addEventListener('click', closeThanks);
+  document.getElementById('thanksOk').addEventListener('click', closeThanks);
+  document.getElementById('thanksModal').addEventListener('click', function(e){ if(e.target === this) closeThanks(); });
+  (function thanksOnReturn(){
+    var q = new URLSearchParams(location.search);
+    if(q.get('donatie') !== 'multumim') return;
+    var suma = parseInt(q.get('suma'), 10);
+    document.getElementById('thanksAmount').textContent = suma > 0 ? ' de ' + suma + ' lei' : '';
+    document.getElementById('thanksModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    history.replaceState(null, '', location.pathname + '#donatie');
+  })();
 
   /* COOKIE CONSENT */
   function initCookieConsent(){
@@ -1469,31 +1266,6 @@
     alert(policies[type] || 'Informație nu disponibilă');
   }
 
-  // Add ?debug=1 to URL to enable debug mode
-  (function initDebugMode() {
-    if(new URLSearchParams(window.location.search).get('debug') === '1') {
-      console.log('%c=== Stripe Integration Debug ===', 'color: #b85c2a; font-size: 16px; font-weight: bold;');
-      console.log('✅ Stripe.js loaded:', typeof Stripe !== 'undefined');
-      console.log('✅ Publishable key configured:', STRIPE_PUBLISHABLE_KEY ? 'YES' : 'NO');
-      fetch('/health')
-        .then(r => r.json())
-        .then(data => {
-          console.log('✅ Backend is running:', data);
-          if(!data.hasStripeKey) console.warn('⚠️  STRIPE_SECRET_KEY not configured on server!');
-        })
-        .catch(err => {
-          console.error('❌ Backend not accessible:', err.message);
-          console.log('💡 Make sure to run: npm install && node server.js');
-        });
-      window.testStripe = async function(amount = 100) {
-        const res = await fetch('/create-payment-intent', {
-          method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ amount: amount })
-        });
-        console.log(await res.json());
-      };
-      console.log('Quick commands: testStripe(100), openCardPay()');
-    }
-  })();
 </script>
 
 </body>
