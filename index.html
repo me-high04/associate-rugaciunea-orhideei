@@ -9,7 +9,41 @@
   <meta name="theme-color" content="#fbf5ef">
   <meta property="og:title" content="Asociația Rugăciunea Orhideei">
   <meta property="og:description" content="Sprijin pentru copii, familii și oameni aflați în nevoie. Donează sau redirecționează 3,5%.">
-  <meta property="og:image" content="images/proiecte/proiect-03.jpg">
+  <meta property="og:image" content="https://rugaciuneaorhideei.com/images/proiecte/proiect-03.jpg">
+  <meta property="og:url" content="https://rugaciuneaorhideei.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ro_RO">
+  <link rel="canonical" href="https://rugaciuneaorhideei.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Asociația Rugăciunea Orhideei",
+    "alternateName": "ASOCIATIA RUGACIUNEA ORHIDEEI",
+    "url": "https://rugaciuneaorhideei.com/",
+    "logo": "https://rugaciuneaorhideei.com/images/logo.jpg",
+    "image": "https://rugaciuneaorhideei.com/images/proiecte/proiect-03.jpg",
+    "description": "Asociație non-profit din București care sprijină copii, familii și oameni aflați în nevoie. Poți dona online, redirecționa 3,5% din impozit (Formular 230) sau încheia un contract de sponsorizare.",
+    "email": "rugaciuneaorhideei@gmail.com",
+    "telephone": "+40771267957",
+    "taxID": "54385615",
+    "nonprofitStatus": "Nonprofit",
+    "areaServed": "România",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Str. Vasile Lascăr, nr. 23-25",
+      "addressLocality": "București",
+      "addressRegion": "Sector 2",
+      "addressCountry": "RO"
+    },
+    "sameAs": [
+      "https://www.instagram.com/rugaciuneaorhideei/",
+      "https://www.facebook.com/profile.php?id=61589576001261",
+      "https://www.tiktok.com/@rugaciuneaorhideei",
+      "https://www.youtube.com/channel/UCmi7dppZWIip4IoUUsSAWpg"
+    ]
+  }
+  </script>
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
   <link rel="alternate icon" href="favicon.ico" sizes="any">
@@ -238,9 +272,6 @@
     .chip.active { background: var(--ink); color: #fff; border-color: var(--ink); --ico-fill: rgba(255,255,255,.2); }
     .swipe-hint { display: none; justify-content: center; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; color: var(--muted); margin-top: .4rem; }
 
-      margin-top: 3rem; border-radius: 28px; padding: 2.4rem 2.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
-      background: linear-gradient(120deg, #3a2418 0%, #5b3422 60%, #7a4225 100%); color: #fff; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
-    }
 
     /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(20, 12, 8, .94); display: none; flex-direction: column; align-items: center; justify-content: center; padding: 16px; }
@@ -346,6 +377,20 @@
     .social-link { display: inline-flex; align-items: center; gap: .6rem; padding: .8rem 1.3rem; border-radius: 999px; background: #fff; border: 1px solid var(--line); text-decoration: none; font-weight: 900; color: var(--ink); transition: all .2s; box-shadow: var(--shadow-sm); min-height: 50px; }
     .social-link svg { width: 22px; height: 22px; }
     .social-link:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--rose); color: var(--brand-dark); }
+
+    /* SECURE PAYMENTS BANNER */
+    .secure-band { background: #2a1c14; color: #f3e4d8; border-bottom: 1px solid #3a2c24; }
+    .secure-band .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; padding-top: 1.4rem; padding-bottom: 1.4rem; }
+    .secure-band .lead { display: flex; align-items: center; gap: .9rem; }
+    .secure-band .ib { --ico-fill: rgba(255,255,255,.08); color: #f3c9b3; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); width: 48px; height: 48px; }
+    .secure-band .ib .ico { width: 24px; height: 24px; }
+    .secure-band b { display: block; color: #fff; font-size: 1rem; }
+    .secure-band small { font-size: .84rem; color: #c9b3a4; }
+    .secure-band .stripe-word { font-weight: 900; letter-spacing: -.01em; color: #fff; }
+    .secure-band .methods { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .secure-band .methods span { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 900; color: #fff; border: 1px solid rgba(255,255,255,.22); border-radius: 8px; padding: .38rem .7rem; background: rgba(255,255,255,.04); }
+    .secure-band .methods .ico { width: 1.1em; height: 1.1em; --ico-fill: rgba(255,255,255,.1); }
+    @media (max-width: 640px) { .secure-band .container { flex-direction: column; align-items: flex-start; } }
 
     /* FOOTER */
     .legal-footer { background: #1f1510; color: #fff; padding: 3.5rem 0 2rem; }
@@ -478,6 +523,18 @@
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
+  <!-- Microsoft Clarity: se încarcă doar după acordul pentru cookies („Acceptă toate”) -->
+  <script type="text/javascript">
+    window.loadClarity = function(){
+      if(window.__clarityLoaded) return; window.__clarityLoaded = true;
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ywirw90dnd");
+    };
+    try { if(localStorage.getItem('cookieConsent') === 'all') window.loadClarity(); } catch(e) {}
+  </script>
 </head>
 <body>
 <!-- Set de icon-uri custom Rugăciunea Orhideei (linie fină rose-gold + umplere pudrată, ca în logo) -->
@@ -829,6 +886,21 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
+<div class="secure-band" role="note" aria-label="Plăți securizate">
+  <div class="container">
+    <div class="lead">
+      <span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></span>
+      <span><b>Plăți securizate prin <span class="stripe-word">Stripe</span></b><small>Conexiune criptată · Datele cardului nu ajung niciodată la noi</small></span>
+    </div>
+    <div class="methods" aria-label="Metode de plată acceptate">
+      <span><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg> Visa</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg> Mastercard</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Apple Pay</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Google Pay</span>
+    </div>
+  </div>
+</div>
+
 <footer class="legal-footer">
   <div class="container">
     <div class="legal-wrapper">
@@ -1245,20 +1317,14 @@
     // Load only essential cookies (e.g., session management)
   }
   function loadAllCookies(){
-    // Load analytics and marketing cookies
-    // Example: Google Analytics
-    if(typeof gtag === 'undefined'){
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID', {'anonymize_ip': true});
-    }
+    // Analytics: Microsoft Clarity (definit în <head>)
+    if(window.loadClarity) window.loadClarity();
   }
   initCookieConsent();
 
   function showPolicy(type) {
     const policies = {
-      cookies: 'Politica de Cookies: Site-ul nostru folosește cookies pentru funcționalitate. Cookies-urile necesare sunt salvate automat. Poți controla alte tipuri din banner-ul de consent.',
+      cookies: 'Politica de Cookies: Site-ul folosește cookies necesare pentru funcționare. Dacă alegi „Acceptă toate”, folosim și Microsoft Clarity pentru a înțelege cum este folosit site-ul (statistici anonimizate, conținutul sensibil este mascat). Poți schimba alegerea ștergând datele site-ului din browser.',
       gdpr: 'GDPR: Respectăm Regulamentul General asupra Protecției Datelor. Datele personale nu sunt partajate cu terți fără consimțământul tău.',
       terms: 'Termeni și Condiții: Site-ul este pus la dispoziție în starea actuală. Orice problemă se va soluționa conform legii române.',
       confidentiality: 'Confidențialitate: Protejăm confidențialitatea datelor tale. Poți cere oricând acces, ștergere sau rectificare a datelor personale.'
