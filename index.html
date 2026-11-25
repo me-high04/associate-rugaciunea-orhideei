@@ -608,15 +608,15 @@
 
     <div class="hero-visual reveal d2" aria-hidden="false">
       <div class="hero-badge"><span class="ib"><svg class="ico" aria-hidden="true"><use href="#i-hands"/></svg></span><span><b>Ajutor concret</b>pentru oameni aflați în nevoie</span></div>
-      <button class="polaroid p1" data-story="5" data-photo="0" aria-label="Deschide poza: Ziua Copilului">
+      <button class="polaroid p1" data-story-id="DZCrgBMDSEr" data-photo="0" aria-label="Deschide poza: Ziua Copilului">
         <img src="images/proiecte/thumbs/proiect-03.jpg" alt="Copii cu daruri de Ziua Copilului, alături de voluntari" width="640" height="480">
         <figcaption>de 1 Iunie</figcaption>
       </button>
-      <button class="polaroid p2" data-story="2" data-photo="0" aria-label="Deschide poza: copii alături de voluntari">
+      <button class="polaroid p2" data-story-id="Dc3mU0RDb5A" data-photo="0" aria-label="Deschide poza: copii alături de voluntari">
         <img src="images/proiecte/thumbs/proiect-07.jpg" alt="Copii alături de voluntari" width="640" height="480">
         <figcaption>împreună</figcaption>
       </button>
-      <button class="polaroid p3" data-story="8" data-photo="0" aria-label="Deschide poza: alături de familii">
+      <button class="polaroid p3" data-story-id="DYxIozBNCOh" data-photo="0" aria-label="Deschide poza: alături de familii">
         <img src="images/proiecte/thumbs/proiect-06.jpg" alt="Voluntar în vizită la o familie" width="554" height="637">
         <figcaption>alături de familii</figcaption>
       </button>
@@ -984,6 +984,10 @@
   var IG = 'https://www.instagram.com/';
   // Ordinea e cea din Instagram: cea mai nouă postare prima. Postare nouă => adaug-o sus.
   var STORIES = [
+    { date: '25 noiembrie 2026', cat: 'copii', label: 'Copii', link: IG + 'p/DgKWPdmjY9f/',
+      photos: ['../instagram/DgKWPdmjY9f-1.jpg', '../instagram/DgKWPdmjY9f-2.jpg', '../instagram/DgKWPdmjY9f-3.jpg', '../instagram/DgKWPdmjY9f-4.jpg', '../instagram/DgKWPdmjY9f-5.jpg'],
+      title: 'Vocea copiilor merită ascultată',
+      text: 'Cu ocazia Zilei Internaționale a Drepturilor Copilului, în colaborare cu DGASPC Sector 2, am organizat un concurs dedicat implicării, creativității și viziunii copiilor asupra unui sistem mai bun, mai atent și mai apropiat de nevoile lor. Alex, câștigătorul inițiativei, a devenit director al Direcției Generale de Asistență Socială și Protecția Copilului Sector 2 pentru o zi. Propunerile lui au vizat combaterea bullyingului, programe de mentorat în care tinerii care au trecut prin sistem și și-au construit un parcurs frumos să îi îndrume pe cei aflați încă în sistem, precum și continuarea sprijinului și după împlinirea vârstei de 18 ani. Credem că fiecare copil are dreptul să fie ascultat și să participe la construirea unui viitor mai bun. Am oferit premii tuturor participanților, pentru implicare, curaj și creativitate. Felicitări copiilor și mulțumim din suflet sponsorilor și partenerilor noștri!' },
     { date: '10 octombrie 2026', cat: 'familii', label: 'Familii', link: IG + 'p/DeUZQHqDY3O/',
       photos: ['../instagram/DeUZQHqDY3O-1.jpg', '../instagram/DeUZQHqDY3O-2.jpg', '../instagram/DeUZQHqDY3O-3.jpg', '../instagram/DeUZQHqDY3O-4.jpg', '../instagram/DeUZQHqDY3O-5.jpg'],
       title: 'Proiectul lunii octombrie a început',
@@ -1101,8 +1105,12 @@
     showLb();
   }
   document.addEventListener('click', function(e){
-    var t = e.target.closest('[data-story]');
-    if(t){ openLb(parseInt(t.dataset.story, 10), parseInt(t.dataset.photo || '0', 10)); }
+    var t = e.target.closest('[data-story], [data-story-id]');
+    if(!t) return;
+    var si = t.dataset.storyId
+      ? STORIES.findIndex(function(st){ return st.link.indexOf(t.dataset.storyId) >= 0; })
+      : parseInt(t.dataset.story, 10);
+    if(si >= 0) openLb(si, parseInt(t.dataset.photo || '0', 10));
   });
   document.getElementById('lbClose').addEventListener('click', closeLb);
   document.getElementById('lbPrev').addEventListener('click', function(){ stepLb(-1); });
