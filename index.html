@@ -114,7 +114,7 @@
     .mmenu { position: fixed; inset: 0; z-index: 899; padding: 100px 22px calc(24px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; overflow-y: auto; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity .3s, transform .3s; background: var(--paper); background-image: repeating-linear-gradient(transparent 0 33px, var(--line) 33px 34px); }
     .mmenu.open { opacity: 1; pointer-events: auto; transform: none; }
     .mmenu > a { font-family: var(--serif); font-weight: 600; font-size: 32px; padding: 12px 4px; text-decoration: none; color: var(--ink); border-bottom: 1px dashed #d9c3a8; }
-    .mmenu .btn-ink { margin-top: 26px; border-bottom: 0; }
+    .mmenu > a.btn-ink { margin-top: 26px; border-bottom: 0; color: #fff7ee; font-family: var(--sans); font-weight: 900; font-size: 18px; padding: 16px 20px; justify-content: center; }
     .mm-contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; }
     .mm-contact a { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 4px; border-radius: 12px; background: #fffdf8; border: 1px solid #e6d0b6; text-decoration: none; font-weight: 900; font-size: 13.5px; color: var(--soft); }
     .mm-contact .ico { width: 1.5em; height: 1.5em; color: var(--gold); }
@@ -251,7 +251,7 @@
     .reel-nav button:hover { background: var(--ink); color: #fff; }
 
     /* DESPRE */
-    .about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
+    .about { max-width: 900px; }
     .about .side-photo { --rr: -3deg; }
     .about .side-photo img { height: auto; aspect-ratio: 554 / 637; }
     .about .side-photo em { font-size: 20px; padding: 0 12px; line-height: 1.05; }
@@ -620,7 +620,6 @@
 <!-- ============ CINE SUNTEM ============ -->
 <section class="sec" id="despre">
   <div class="wrap about">
-    <div class="side-photo rv"><img src="images/proiecte/proiect-06.jpg" alt="Voluntar în vizită la o familie" loading="lazy" width="554" height="637"><em>Din 2026 · înscriși la ANAF pentru deduceri fiscale</em></div>
     <div class="rv">
       <div class="kicker">Cine suntem</div>
       <h2 class="h2">Oameni simpli care cred că nimeni nu trebuie <span class="hl">lăsat în urmă</span>.</h2>
