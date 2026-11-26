@@ -88,7 +88,9 @@
     .btn-ghost { font-family: var(--hand); font-size: 26px; color: var(--ink); text-decoration: none; position: relative; display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; cursor: pointer; }
     .btn-ghost::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--red); transform: scaleX(.3); transform-origin: left; transition: transform .3s; }
     .btn-ghost:hover::after { transform: scaleX(1); }
-    .heart { display: inline-flex; animation: beat 1.8s ease-in-out infinite; }
+    .heart { display: inline-flex; }
+    /* inima bate doar la hover, pe calculator; pe telefon stă pe loc */
+    @media (hover: hover) and (pointer: fine) { a:hover .heart, button:hover .heart { animation: beat 1.2s ease-in-out infinite; } }
     @keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } 45% { transform: scale(1.15); } }
 
     /* NAV — capsulă plutitoare */
@@ -680,10 +682,10 @@
       <div>
         <h5 class="footer-title">Legal</h5>
         <ul class="footer-links">
-          <li><a href="#" onclick="showPolicy('cookies');return false;">Politică cookies</a></li>
-          <li><a href="#" onclick="showPolicy('gdpr');return false;">GDPR și date personale</a></li>
-          <li><a href="#" onclick="showPolicy('terms');return false;">Termeni și condiții</a></li>
-          <li><a href="#" onclick="showPolicy('confidentiality');return false;">Confidențialitate</a></li>
+          <li><a href="politica-de-confidentialitate.html">Confidențialitate și GDPR</a></li>
+          <li><a href="politica-cookies.html">Politică cookies</a></li>
+          <li><a href="termeni-si-conditii.html">Termeni și condiții</a></li>
+          <li><a href="politica-cookies.html#preferinte">Setări cookies</a></li>
         </ul>
       </div>
       <div>
@@ -732,16 +734,6 @@
   </div>
 </div>
 
-<!-- Informații legale -->
-<div id="policyModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
-  <div class="modal-card">
-    <button class="modal-close" id="policyClose" aria-label="Închide"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
-    <h3 id="policyTitle"></h3>
-    <p class="policy-text" id="policyText"></p>
-    <button class="btn-ink" type="button" id="policyOk">Am înțeles</button>
-  </div>
-</div>
-
 <!-- Mulțumire după întoarcerea de pe Stripe -->
 <div id="thanksModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
   <div class="modal-card">
@@ -760,7 +752,7 @@
   <div class="cookie-consent-content">
     <div style="flex:1;min-width:240px">
       <h3>Politica de cookies</h3>
-      <p>Folosim cookies pentru a îmbunătăți experiența pe site. Unele sunt esențiale (necesare), altele ajută la analytics și marketing.</p>
+      <p>Folosim cookies pentru a îmbunătăți experiența pe site. Unele sunt esențiale (necesare), altele ajută la analytics și marketing. <a href="politica-cookies.html" style="color:#f3c9b3">Detalii</a></p>
     </div>
     <div class="cookie-consent-buttons">
       <button onclick="acceptCookiesNecessary()" class="btn-necessary">Doar necesare</button>
@@ -1006,7 +998,6 @@
     if(e.key !== 'Escape') return;
     if(nav.classList.contains('open')) setMenu(false);
     if(document.getElementById('thanksModal').style.display === 'flex') closeThanks();
-    if(document.getElementById('policyModal').style.display === 'flex') closePolicy();
   });
 
   /* ---------- DONAȚIE: sume (încercuite de mână) ---------- */
@@ -1120,24 +1111,6 @@
   }
   initCookieConsent();
 
-  var POLICIES = {
-    cookies: ['Politica de cookies', 'Site-ul folosește cookies necesare pentru funcționare. Dacă alegi „Acceptă toate”, folosim și Microsoft Clarity pentru a înțelege cum este folosit site-ul (statistici anonimizate, conținutul sensibil este mascat). Poți schimba alegerea ștergând datele site-ului din browser.'],
-    gdpr: ['GDPR și date personale', 'Respectăm Regulamentul General asupra Protecției Datelor. Datele personale nu sunt partajate cu terți fără consimțământul tău.'],
-    terms: ['Termeni și condiții', 'Site-ul este pus la dispoziție în starea actuală. Orice problemă se va soluționa conform legii române.'],
-    confidentiality: ['Confidențialitate', 'Protejăm confidențialitatea datelor tale. Poți cere oricând acces, ștergere sau rectificare a datelor personale, scriindu-ne la rugaciuneaorhideei@gmail.com.']
-  };
-  function showPolicy(type){
-    var pol = POLICIES[type]; if(!pol) return;
-    document.getElementById('policyTitle').textContent = pol[0];
-    document.getElementById('policyText').textContent = pol[1];
-    document.getElementById('policyModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    document.getElementById('policyClose').focus();
-  }
-  function closePolicy(){ document.getElementById('policyModal').style.display = 'none'; document.body.style.overflow = ''; }
-  document.getElementById('policyClose').addEventListener('click', closePolicy);
-  document.getElementById('policyOk').addEventListener('click', closePolicy);
-  document.getElementById('policyModal').addEventListener('click', function(e){ if(e.target === this) closePolicy(); });
 </script>
 
 </body>
