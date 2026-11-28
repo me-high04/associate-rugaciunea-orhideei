@@ -9,3 +9,4 @@ Site static (`index.html` + pagini legale) publicat pe Netlify din rădăcina re
 - Fără referințe religioase în textele site-ului și fără focus pe „ghiozdane”; tonul e general: copii, familii, oameni în nevoie.
 - Când adaugi un serviciu extern (script, font, iframe), adaugă domeniul în CSP-ul din `netlify.toml` și rulează testul CSP local (0 încălcări) înainte de push.
 - Postările noi de pe Instagram se adaugă primele în `STORIES` din `js/site.js`; pozele merg în `images/instagram/`.
+- Fiecare push pe `main` = o publicare Netlify care consumă credite (planul gratuit are puține pe lună; în noiembrie 2026 s-au terminat și publicările s-au oprit). Grupează modificările și dă push rar, de preferat o dată la final; verifică pe live după fiecare push că deploy-ul chiar a rulat.
