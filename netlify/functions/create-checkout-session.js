@@ -6,7 +6,7 @@ const MAX_LEI = 50000;
 
 const json = (statusCode, body) => ({
   statusCode,
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
   body: JSON.stringify(body)
 });
 
@@ -15,10 +15,12 @@ exports.handler = async (event) => {
     return json(405, { error: 'Method Not Allowed' });
   }
   if (!process.env.STRIPE_SECRET_KEY) {
-    return json(500, { error: 'Plățile nu sunt configurate (lipsește STRIPE_SECRET_KEY).', code: 'missing_secret_key' });
+    console.error('create-checkout-session: lipsește STRIPE_SECRET_KEY');
+    return json(500, { error: 'Plățile online nu sunt disponibile momentan. Folosește transferul bancar.' });
   }
 
   try {
+    if ((event.body || '').length > 1000) return json(413, { error: 'Cerere prea mare.' });
     const { amount } = JSON.parse(event.body || '{}');
     const lei = Number(amount);
     if (!Number.isInteger(lei) || lei < MIN_LEI || lei > MAX_LEI) {
@@ -56,12 +58,8 @@ exports.handler = async (event) => {
 
     return json(200, { url: session.url });
   } catch (error) {
+    // Detaliile tehnice rămân doar în logurile Netlify (Functions → create-checkout-session).
     console.error('create-checkout-session error:', error.type, error.code, error.message);
-    // Codul Stripe nu conține date sensibile și ajută la diagnosticare.
-    return json(500, {
-      error: 'Nu am putut porni plata. Încearcă din nou sau folosește transferul bancar.',
-      code: error.code || error.type || 'unknown',
-      detail: error.message // nu se afișează pe pagină; util pentru diagnosticare
-    });
+    return json(500, { error: 'Nu am putut porni plata. Încearcă din nou sau folosește transferul bancar.' });
   }
 };

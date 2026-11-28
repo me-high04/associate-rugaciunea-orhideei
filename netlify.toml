@@ -7,10 +7,97 @@
   command = "npm start"
   port = 3000
 
+[context.production]
+  environment = { NODE_ENV = "production" }
+
+# ---------------------------------------------------------------------------
+# Redirecționări
+# ---------------------------------------------------------------------------
+
+# Adresa implicită Netlify trimite la domeniul principal (fără copii ale site-ului).
+[[redirects]]
+  from = "https://asociatia-rugaciunea-orhideei.netlify.app/*"
+  to = "https://rugaciuneaorhideei.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/create-checkout-session"
   to = "/.netlify/functions/create-checkout-session"
   status = 200
 
-[context.production]
-  environment = { NODE_ENV = "production" }
+# Fișierele interne ale proiectului NU sunt publice (site-ul se publică din rădăcina repo-ului).
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/server.js"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/.gitignore"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# ---------------------------------------------------------------------------
+# Headere de securitate (toate paginile)
+# ---------------------------------------------------------------------------
+# CSP — ce are voie pagina să încarce. Pentru un serviciu extern nou, adaugă
+# domeniul lui DOAR în directiva potrivită, apoi testează local:
+#   - scripturi externe   -> script-src   (ex. un widget de chat)
+#   - fonturi             -> font-src / style-src
+#   - imagini externe     -> img-src
+#   - cereri fetch/XHR    -> connect-src
+#   - iframe-uri (video)  -> frame-src    (ex. https://www.youtube-nocookie.com)
+# Google Fonts: fonts.googleapis.com (CSS) + fonts.gstatic.com (fișiere font).
+# Microsoft Clarity (doar după acord): www.clarity.ms + scripts.clarity.ms + *.clarity.ms + c.bing.com.
+# Stripe: donatorul e trimis pe checkout.stripe.com (navigare), deci nu e nevoie de reguli.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.clarity.ms https://c.bing.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.clarity.ms https://c.bing.com; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; worker-src 'none'; upgrade-insecure-requests"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), serial=(), hid=(), magnetometer=(), gyroscope=(), accelerometer=(), browsing-topics=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+
+[[headers]]
+  for = "/.well-known/security.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"

@@ -14,17 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:wght@600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="legal.css">
-  <script>
-    window.loadClarity = function(){
-      if(window.__clarityLoaded) return; window.__clarityLoaded = true;
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "ywirw90dnd");
-    };
-    try { if(localStorage.getItem('cookieConsent') === 'all') window.loadClarity(); } catch(e) {}
-  </script>
+  <script src="js/early.js"></script>
 </head>
 <body>
 <header class="top">
@@ -99,16 +89,6 @@
     <div><a href="politica-de-confidentialitate.html">Confidențialitate</a><a href="politica-cookies.html">Cookies</a><a href="termeni-si-conditii.html">Termeni</a><a href="index.html">Acasă</a></div>
   </div>
 </footer>
-<script>
-  (function(){
-    var st = document.getElementById('clarityState'), saved = document.getElementById('prefSaved');
-    function get(){ try { return localStorage.getItem('cookieConsent'); } catch(e) { return null; } }
-    function show(){ var on = get() === 'all'; st.textContent = on ? 'activ' : 'inactiv'; st.className = 'pill ' + (on ? 'on' : 'off'); }
-    function set(v){ try { localStorage.setItem('cookieConsent', v); } catch(e) {} show(); saved.hidden = false; setTimeout(function(){ saved.hidden = true; }, 2000); if(v === 'all' && window.loadClarity) window.loadClarity(); }
-    document.getElementById('prefAll').addEventListener('click', function(){ set('all'); });
-    document.getElementById('prefNecessary').addEventListener('click', function(){ set('necessary'); });
-    show();
-  })();
-</script>
+<script src="js/cookies-page.js"></script>
 </body>
 </html>
